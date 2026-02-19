@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Dieta y Macros Dinámicos</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f6f9;
+      margin: 0;
+      padding: 15px
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px
+    }
+
+    input,
+    select,
+    button {
+      border-radius: 5px;  
+      padding: 10px;
+      font-size: 16px
+    }
+
+    .g0 {
+      border: 2px solid;
+    }
+
+    .g1 {
+      border: 2px solid #3498db;
+    }
+
+    .g2 {
+      border: 2px solid #e01919;
+    }
+
+
+    button {
+      background: #2c7be5;
+      color: #fff;
+      border: none;
+      border-radius: 6px
+    }
+
+    .card {
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px
+    }
+
+    canvas {
+      margin-top: 30px
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>🍽 Dieta personalizada de #name# + 📊 Progreso</h1>
+
+    <form id="form">
+      <select class="g0" id="sexo" onchange="seleccionarOpcion(this.value)" title="Sexo">
+        <option value="hombre">Hombre</option>
+        <option value="mujer">Mujer</option>
+      </select>
+      <input class="g1" type="number" id="edad" placeholder="Edad" title="Edad" required>
+      <input class="g1" type="number" id="peso" placeholder="Peso (kg)" title="Peso" required>
+      <input class="g1" type="number" id="altura" placeholder="Altura (cm)" title="Altura" required>
+      <select class="g1" id="actividad" title="Actividad">
+        <option value="1.2">Sedentario</option>
+        <option value="1.375">Ligero</option>
+        <option value="1.55">Moderado</option>
+        <option value="1.725">Alto</option>
+      </select>
+      <select class="g1" id="objetivo" title="Objetivos">
+        <option value="definicion">Déficit</option>
+        <option value="mantenimiento">Mantenimiento</option>
+        <option value="volumen">Seperávit</option>
+      </select>
+      <input class="g2" type="number" id="cuello" placeholder="Cuello (cm)" title="Cuello" required>
+      <input class="g2" type="number" id="cintura" placeholder="Cintura (cm)" title="Cintura" required>
+      <input class="g2" type="hidden" id="cadera" placeholder="Cadera (cm)" title="Cadera" >
+      <select class="g0" id="tipoD" title="Dietas" >
+      </select>
+      <button onclick="calcular()">Calcular dieta</button>
+    </form>
+    <div id="resultado"></div>
+    <canvas id="chartG"></canvas>
+    <canvas id="chartC"></canvas>
+    <canvas id="chart"></canvas>
+  </div>
+  <script>
+
+    const datos = localStorage.getItem("dietaDatos");
+    let name = "Default";
+    if (datos) {
+      name = JSON.parse(datos).name;
+    }
+    const params = new URLSearchParams(location.search);
+    name = params.get("name")?.trim() || name;
+
+    const script = document.createElement('script');
+    script.src = `./data/${name}.js`;
+    script.async = false;
+    document.head.appendChild(script);
+
+    setTimeout(()=> { addOptionTipoD(); }, 100);
+
+    const icons = {
+      "Desayuno": `🌅`,
+      "Media mañana": `🕙`,
+      "Comida": `🍽️`,
+      "Merienda": `🕔`,
+      "Cena": `🌙`
+    }
+
+    const sexoEl = document.getElementById("sexo");
+    const edadEl = document.getElementById("edad");
+    const pesoEl = document.getElementById("peso");
+    const alturaEl = document.getElementById("altura");
+    const cinturaEl = document.getElementById("cintura");
+    const caderaEl = document.getElementById("cadera");
+    const cuelloEl = document.getElementById("cuello");
+    const actividadEl = document.getElementById("actividad");
+    const objetivoEl = document.getElementById("objetivo");
+    const tipoDEl = document.getElementById("tipoD");
+    const resultado = document.getElementById("resultado");
+    const ctxG = document.getElementById("chartG");
+    const ctxC = document.getElementById("chartC");
+    const ctx = document.getElementById("chart");
+    let chartG,chartC,chart;
+
+    document.querySelector('h1').textContent = document.querySelector('h1').textContent.replace("#name#", name);
+
+    seleccionarOpcion(sexoEl);
+
+    window.onload = function () {
+      const datos = localStorage.getItem("dietaDatos");
+      if (!datos) return;
+
+      const d = JSON.parse(datos);
+      //Añadir un nuevo parámetro (ej. "name=")
+      updateURL(d.name);
+      sexoEl.value = d.sexo;
+      seleccionarOpcion(d.sexo);
+      edadEl.value = d.edad;
+      pesoEl.value = d.peso;
+      alturaEl.value = d.altura;
+      cinturaEl.value = d.cintura;
+      cuelloEl.value = d.cuello;
+      caderaEl.value = d.cadera;
+      actividadEl.value = d.actividad;
+      objetivoEl.value = d.objetivo;
+      addOptionTipoD();
+      tipoDEl.value = d.tipoD;
+      resultado.innerHTML = d.result;
+    };
+
+    // 📚 HISTORIAL
+    const loadHistory = () => JSON.parse(localStorage.getItem("history")) || [];
+
+    const saveHistory = (data) => {
+      const history = loadHistory();
+      history.push(data);
+      localStorage.setItem("history", JSON.stringify(history.slice(-10)));
+    };
+
+
+    function calcular() {
+
+      const sexo = sexoEl.value;
+      const edad = +edadEl.value;
+      const peso = +pesoEl.value;
+      const altura = +alturaEl.value;
+      const cintura =+cinturaEl.value;
+      const cadera =+ caderaEl.value
+      const cuello = +cuelloEl.value;
+      const actividad = +actividadEl.value;
+      const objetivo = objetivoEl.value;
+      const tipoD = tipoDEl.value;
+      let tmb = sexo === "hombre"
+        ? 10 * peso + 6.25 * altura - 5 * edad + 5
+        : 10 * peso + 6.25 * altura - 5 * edad - 161;
+
+      let calorias = tmb * actividad;
+
+      if (objetivo === "definicion") calorias -= 400;
+      if (objetivo === "volumen") calorias += 350;
+
+      calorias = Math.round(calorias);
+
+      const proteinas = Math.round(peso * (objetivo === "definicion" ? 2.2 : 1.8));
+      const grasas = Math.round(peso * 0.9);
+      const caloriasRestantes =
+        calorias - (proteinas * 4 + grasas * 9);
+      const carbos = Math.round(caloriasRestantes / 4);
+
+      const objetivos = {};
+      !alimentos.hasOwnProperty(tipoD) || Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
+        let lon = (1/Object.entries(alimentos[tipoD]).length).toFixed(3);
+        objetivos[key] = {
+          kcal: Math.round(calorias * lon),
+          prote: Math.round(proteinas * lon),
+          carbs: Math.round(carbos * lon),
+          grasa: Math.round(grasas * lon)
+        };
+      });
+
+
+    let resultD = {};
+    let diet = "";
+    let totalKcal = 0, totalProte = 0, totalCabs = 0, totalGrasa = 0; 
+    !alimentos.hasOwnProperty(tipoD) || Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
+      // 🍽 alimentos (aprox)
+      let result = optimizadorFlexible(value, objetivos[key], obtenerPrioridades(objetivo));
+      diet += `\n    ${icons[key]} <b>${key}</b>: \n${pintar(alimentos[tipoD][key], result)}`;
+      totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
+      totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
+    });
+    diet += `\n\n\t<b>Suma de totales</b>: \n\t kcal: ${Math.round(totalKcal)} \n\t Prote: ${Math.round(totalProte)} \n\t Carbs: ${Math.round(totalCabs)} \n\t Grasa: ${Math.round(totalGrasa)}`;
+    const resultadoEntreno = calcularPlan({
+      edad: edad,
+      peso: peso,
+      altura: altura,
+      kcalActuales: calorias,
+      factorActividad: actividad
+    });
+
+    const gCorporal = grasaCorporal(sexo, cintura, cadera, cuello,  altura);
+
+    const result = `
+    <h4>Objetivos en macronutrientes:</h4><pre>
+    🔥 Calorías: ${calorias} kcal
+    🥩 Proteínas: ${proteinas} g
+    🍚 Carbohidratos: ${carbos} g
+    🥑 Grasas: ${grasas} g
+    </pre>
+    <h4>% Grasa corporal:</h4><pre>
+    🧍 % Grasa: ${gCorporal}
+    <hr></pre>
+    <h4>Dieta:</h4><pre>
+    \t${diet}
+    <hr>
+    🏋️ <b>Entrenamiento</b>
+    \t${pintaEntreno(resultadoEntreno)}</pre>
+    `;
+
+      resultado.innerHTML = result;
+      // 🔐 Guardar datos
+      localStorage.setItem("dietaDatos", JSON.stringify({
+        name, sexo, edad, peso, altura, cuello, cintura, cadera, actividad, objetivo, tipoD, result
+      }));
+
+      saveHistory({ date: new Date().toLocaleDateString(), gCorporal, calorias, proteinas, carbos, grasas });
+      drawChart();
+    }
+
+    function optimizadorFlexible(alimentos, objetivos, prioridad) {
+
+      const iteraciones = 3000;
+      const learningRate = 0.01;
+
+      let gramos = new Array(alimentos.length).fill(100);
+
+      function calcularTotales(gs) {
+        let kcal = 0, prote = 0, carbs = 0, grasa = 0;
+
+        gs.forEach((g, i) => {
+          kcal += g * alimentos[i].kcal / 100;
+          prote += g * alimentos[i].proteina / 100;
+          carbs += g * alimentos[i].carbs / 100;
+          grasa += g * alimentos[i].grasa / 100;
+        });
+
+        return { kcal, prote, carbs, grasa };
+      }
+
+      function varianza(array) {
+        const media = array.reduce((a, b) => a + b, 0) / array.length;
+        return array.reduce((acc, val) =>
+          acc + Math.pow(val - media, 2), 0) / array.length;
+      }
+
+      function coste(gs) {
+
+        const t = calcularTotales(gs);
+
+        return (
+          Math.abs(t.kcal - objetivos.kcal) * prioridad.calorias +
+          Math.abs(t.prote - objetivos.prote) * prioridad.proteina +
+          Math.abs(t.carbs - objetivos.carbs) * prioridad.carbs +
+          Math.abs(t.grasa - objetivos.grasa) * prioridad.grasa +
+          varianza(gs) * prioridad.equilibrio
+        );
+      }
+
+      for (let iter = 0; iter < iteraciones; iter++) {
+
+        const baseCoste = coste(gramos);
+
+        for (let i = 0; i < gramos.length; i++) {
+
+          const copia = [...gramos];
+          copia[i] += 1;
+
+          const gradiente = coste(copia) - baseCoste;
+
+          gramos[i] -= learningRate * gradiente;
+
+          if (gramos[i] < 0) gramos[i] = 0;
+        }
+      }
+
+      return {
+        gramos: gramos.map(g => Math.round(g)),
+        totales: calcularTotales(gramos)
+      };
+    }
+
+    function obtenerPrioridades(modo) {
+
+      switch (modo) {
+
+        case "definicion":
+          return {
+            calorias: 3,
+            proteina: 5,
+            carbs: 1,
+            grasa: 4,
+            equilibrio: 0.002
+          };
+
+        case "volumen":
+          return {
+            calorias: 3,
+            proteina: 3,
+            carbs: 3,
+            grasa: 1,
+            equilibrio: 0.2
+          };
+
+        case "mantenimiento":
+          return {
+            calorias: 2,
+            proteina: 2,
+            carbs: 2,
+            grasa: 2,
+            equilibrio: 0.02
+          };
+      }
+    }
+    function pintar(alimentos, result) {
+      var paint = "";
+      result.gramos.forEach((g, i) => {
+        paint += `\t-${alimentos[i].nombre}: ${g} g\n`;
+      });
+      paint += `\n\tTotales: \n\t kcal: ${Math.round(result.totales.kcal)} \n\t Prote: ${Math.round(result.totales.prote)} \n\t Carbs: ${Math.round(result.totales.carbs)} \n\t Grasa: ${Math.round(result.totales.grasa)}`;
+      return paint;
+    }
+
+    function pintaEntreno (resultadoEntreno, base = true) {
+        let entreno = "";
+        Object.entries(resultadoEntreno).forEach(([key, value]) => {
+          // Entreno
+          entreno = entreno + `\n        ${base?"-":"  "}${key}: ${typeof value === "object" ? pintaEntreno(value, false) : value}`;
+        });
+        return entreno;
+    }
+
+    function drawChart() {
+      const history = loadHistory();
+      const labels = history.map(h => h.date);
+      if (chartG) chartG.destroy();
+
+      chartG = new Chart(ctxG, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            { label: "% Grasa corporal", data: history.map(h => h.gCorporal), borderWidth: 2 }
+          ]
+        },
+        options: { responsive: true }
+      });
+      
+      if (chartC) chartC.destroy();
+
+      chartC = new Chart(ctxC, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            { label: "Calorias", data: history.map(h => h.calorias), borderWidth: 2 }
+          ]
+        },
+        options: { responsive: true }
+      });
+
+      if (chart) chart.destroy();
+
+      chart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            { label: "Proteína", data: history.map(h => h.proteinas), borderWidth: 2 },
+            { label: "Carbos", data: history.map(h => h.carbos), borderWidth: 2 },
+            { label: "Grasas", data: history.map(h => h.grasas), borderWidth: 2 }
+          ]
+        },
+        options: { responsive: true }
+      });
+    }
+
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * max);
+    }
+
+    function updateURL(name) {
+      window.history.pushState({}, '', `${window.location.pathname}?name=${name || ''}`);
+    }
+
+    function addOptionTipoD() {
+      var tSelect = document.getElementById("tipoD");
+      for (let i = tSelect.options.length - 1; i >= 0; i--) {
+        tSelect.remove(i);
+      }
+      if (alimentos) { 
+        Object.entries(alimentos).forEach(([key, value]) => {
+          var option = document.createElement("option");
+          option.text = key;
+          tSelect.add(option);
+          tSelect.selectedIndex = 0;
+        });
+      }
+    }
+
+    function calcularPlan({ edad, peso, altura, kcalActuales, factorActividad }) {
+
+    // 1️⃣ BMR (Mifflin St Jeor - Hombre)
+    const bmr = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
+
+    // 2️⃣ Factor actividad según días
+    const tdee = bmr * factorActividad;
+
+    // 3️⃣ Diferencia calórica
+    const diferencia = kcalActuales - tdee;
+
+    let fase;
+    let recomendacion;
+
+    if (diferencia < -300) {
+      fase = "Definición";
+      recomendacion = {
+        diasFuerza: 4,
+        repeticiones: "8-12",
+        seriesPorMusculo: "10-14",
+        cardio: "2-3 sesiones zona 2"
+      };
+    } 
+    else if (diferencia > 300) {
+      fase = "Volumen";
+      recomendacion = {
+        diasFuerza: 5,
+        repeticiones: "6-12",
+        seriesPorMusculo: "12-18",
+        cardio: "1-2 sesiones suaves"
+      };
+    } 
+    else {
+      fase = "Recomposición";
+      recomendacion = {
+        diasFuerza: 4,
+        repeticiones: "8-12",
+        seriesPorMusculo: "12-15",
+        cardio: "2 sesiones opcionales"
+      };
+    }
+
+    return {
+      BMR: Math.round(bmr),
+      TDEE: Math.round(tdee),
+      DiferenciaCalorica: Math.round(diferencia),
+      Fase: fase,
+      PlanEntrenamiento: recomendacion
+    };
+  }
+
+  function grasaCorporal(sexo, cintura, cadera = cintura * 0.1, cuello, altura) {
+    // Todas las medidas en cm
+    const resultado = sexo === "hombre" ? 495 / (
+      1.0324
+      - 0.19077 * Math.log10(cintura - cuello)
+      + 0.15456 * Math.log10(altura)
+    ) - 450 : 495 / (
+      1.29579
+      - 0.35004 * Math.log10(cintura + cadera - cuello)
+      + 0.22100 * Math.log10(altura)
+    ) - 450;
+
+    return Number(resultado.toFixed(2));
+  }
+
+  function seleccionarOpcion(valor) {
+    document.getElementById("cadera").type= valor === "hombre" ? "hidden": "number";
+  }
+
+  drawChart();
+  </script>
+</body>
+
+</html>

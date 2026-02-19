@@ -119,7 +119,7 @@
     script.async = false;
     document.head.appendChild(script);
 
-    setTimeout(()=> { onloadCache(); }, 100);
+    //setTimeout(()=> { onloadCache(); }, 100);
 
     const icons = {
       "Desayuno": `🌅`,
@@ -485,7 +485,7 @@
 
   function grasaCorporal(sexo, cintura, cadera = cintura * 0.1, cuello, altura) {
     // Todas las medidas en cm
-    const resultado = sexo === "hombre" ? 495 / (
+    const resultado = (sexo == "hombre" ? 495 / (
       1.0324
       - 0.19077 * Math.log10(cintura - cuello)
       + 0.15456 * Math.log10(altura)
@@ -493,13 +493,13 @@
       1.29579
       - 0.35004 * Math.log10(cintura + cadera - cuello)
       + 0.22100 * Math.log10(altura)
-    ) - 450;
+    ) - 450);
 
     return Number(resultado.toFixed(2));
   }
 
   function seleccionarOpcion(valor) {
-    document.getElementById("cadera").type= valor === "hombre" ? "hidden": "number";
+    document.getElementById("cadera").type = (valor == "hombre" ? "hidden": "number");
   }
 
   function onloadCache() {

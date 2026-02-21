@@ -215,7 +215,7 @@
       totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
-    diet += `\n\n\t<b>Suma de totales</b>: \n\t kcal: ${Math.round(totalKcal)} kcal\n\t Prote: ${Math.round(totalProte)} g\n\t Carbs: ${Math.round(totalCabs)} g\n\t Grasa: ${Math.round(totalGrasa)} g`;
+    diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} kcal\n\t Proteínas: ${Math.round(totalProte)} g\n\t Carbohidratos: ${Math.round(totalCabs)} g\n\t Grasas: ${Math.round(totalGrasa)} g`;
     const resultadoEntreno = calcularPlan({
       edad: edad,
       peso: peso,
@@ -352,7 +352,7 @@
       result.gramos.forEach((g, i) => {
         paint += `\t-${alimentos[i].nombre}: ${g} g\n`;
       });
-      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} kcal\n\t Prote: ${Math.round(result.totales.prote)} g\n\t Carbs: ${Math.round(result.totales.carbs)} g\n\t Grasa: ${Math.round(result.totales.grasa)} g`;
+      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} g\n\t Grasas: ${Math.round(result.totales.grasa)} g`;
       return paint;
     }
 

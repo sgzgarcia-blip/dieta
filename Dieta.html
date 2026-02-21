@@ -248,7 +248,7 @@
         name, sexo, edad, peso, altura, cuello, cintura, cadera, actividad, objetivo, tipoD, result
       }));
 
-      saveHistory({ date: new Date().toLocaleDateString(), gCorporal, calorias, proteinas, carbos, grasas });
+      saveHistory({ date: new Date().toLocaleDateString(), gCorporal, totalKcal, totalProte, totalCabs, totalGrasa });
       drawChart();
     }
 
@@ -387,7 +387,7 @@
         data: {
           labels,
           datasets: [
-            { label: "Calorias", data: history.map(h => h.calorias), borderWidth: 2 }
+            { label: "Calorias", data: history.map(h => h.totalKcal), borderWidth: 2 }
           ]
         },
         options: { responsive: true }
@@ -400,9 +400,9 @@
         data: {
           labels,
           datasets: [
-            { label: "Proteína", data: history.map(h => h.proteinas), borderWidth: 2 },
-            { label: "Carbos", data: history.map(h => h.carbos), borderWidth: 2 },
-            { label: "Grasas", data: history.map(h => h.grasas), borderWidth: 2 }
+            { label: "Proteína", data: history.map(h => h.totalProte), borderWidth: 2 },
+            { label: "Carbos", data: history.map(h => h.totalCabs), borderWidth: 2 },
+            { label: "Grasas", data: history.map(h => h.totalGrasa), borderWidth: 2 }
           ]
         },
         options: { responsive: true }

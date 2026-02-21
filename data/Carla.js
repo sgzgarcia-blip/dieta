@@ -1,7 +1,7 @@
 const alimentos = {
    "Dieta Carla A": {
         "Desayuno": [
-            { "nombre": "Zumo de naranja", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
+            { "nombre": "Zumo de naranja. etc", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
             },
             { "nombre": "Cefé o poleto de té", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
             },
@@ -42,7 +42,7 @@ const alimentos = {
     },
     "Dieta Carla B": {
         "Desayuno": [
-            { "nombre": "Zumo de naranja", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
+            { "nombre": "Zumo de naranja. etc", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
             },
             { "nombre": "Cefé o poleto de té", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
             },

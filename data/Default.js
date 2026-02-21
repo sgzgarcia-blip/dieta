@@ -1,5 +1,5 @@
 const alimentos = {
-   "Proteina Animal": {
+   "Dieta Santi A": {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
             },
@@ -39,7 +39,7 @@ const alimentos = {
             }
         ]
     },
-  "Proteina Vegetal": {
+  "Dieta Santi B": {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
             },

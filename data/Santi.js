@@ -174,7 +174,6 @@ const alimentos = {
       "Comida": [
         {"nombre": "Pechuga Pollo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3},
         {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10},
         {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
@@ -183,8 +182,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Merluza", "kcal": 160, "proteina": 36, "carbs": 0, "grasa": 2},
-        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
       ]
     },
     "Martes": {
@@ -200,7 +198,6 @@ const alimentos = {
       "Comida": [
         {"nombre": "Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 2},
         {"nombre": "Quinoa cruda", "kcal": 295, "proteina": 10, "carbs": 55, "grasa": 5},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10},
         {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
@@ -209,8 +206,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22},
-        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0}
       ]
     },
     "Miercoles": {
@@ -224,8 +220,7 @@ const alimentos = {
       "Comida": [
         {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7},
         {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1},
-        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
         {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2},
@@ -233,8 +228,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
-        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
       ]
     },
     "Jueves": {
@@ -249,8 +243,7 @@ const alimentos = {
       "Comida": [
         {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22},
         {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1},
-        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
         {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2},
@@ -258,8 +251,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Merluza", "kcal": 160, "proteina": 36, "carbs": 0, "grasa": 2},
-        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0}
       ]
     },
     "Viernes": {
@@ -275,8 +267,7 @@ const alimentos = {
       "Comida": [
         {"nombre": "Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 2},
         {"nombre": "Quinoa cruda", "kcal": 295, "proteina": 10, "carbs": 55, "grasa": 5},
-        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
         {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2},
@@ -284,8 +275,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22},
-        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
       ]
     },
     "Sábado": {
@@ -299,8 +289,7 @@ const alimentos = {
       "Comida": [
         {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7},
         {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1},
-        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
         {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2},
@@ -308,8 +297,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
-        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0}
       ]
     },
     "Domingo": {
@@ -325,8 +313,7 @@ const alimentos = {
       "Comida": [
         {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7},
         {"nombre": "Quinoa cruda", "kcal": 295, "proteina": 10, "carbs": 55, "grasa": 5},
-        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
       ],
       "Merienda": [
         {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2},
@@ -334,8 +321,7 @@ const alimentos = {
       ],
       "Cena": [
         {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22},
-        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0},
-        {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
+        {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
       ]
     }
 }

@@ -216,13 +216,6 @@
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
     diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} kcal\n\t Proteínas: ${Math.round(totalProte)} g\n\t Carbohidratos: ${Math.round(totalCabs)} g\n\t Grasas: ${Math.round(totalGrasa)} g`;
-    const resultadoEntreno = planInteligente({
-      edad: edad,
-      peso: peso,
-      altura: altura,
-      kcalActuales: totalKcal,
-      factorActividad: actividad
-    });
 
     const gCorporal = grasaCorporal(sexo, cintura, cadera, cuello,  altura);
 
@@ -247,7 +240,13 @@
     \t${diet}
     <hr>
     🏋️ <b>Entrenamiento</b>
-    \t${pintaJSON(resultadoEntreno)}</pre>
+    \t${pintaJSON(planInteligente({
+                      edad: edad,
+                      peso: peso,
+                      altura: altura,
+                      kcalActuales: totalKcal,
+                      factorActividad: actividad
+                    }))}</pre>
     `;
 
       resultado.innerHTML = result;
@@ -518,7 +517,7 @@
       },
       Macros: {
         Proteina_g: Math.round(peso * proteina),
-        Nota: "Proteína aumentada progresivamente con la edad"
+        Nota: "Proteína aumentada \t\nprogresivamente con la edad"
       }
     };
   }
@@ -544,21 +543,21 @@
     let recomendacion = "";
 
     if (cambioGrasa < 0 && cambioMagra >= 0) {
-      recomendacion = "Excelente: pierdes grasa manteniendo músculo";
+      recomendacion = "\t\nExcelente: \t\npierdes grasa manteniendo músculo";
     }
     else if (cambioMagra < 0) {
       ajuste = +150;
-      recomendacion = "Posible pérdida muscular → subir calorías y proteína";
+      recomendacion = "\t\nPosible pérdida muscular → \t\nsubir calorías y proteína";
     }
     else if (cambioGrasa >= 0) {
       ajuste = -150;
-      recomendacion = "No estás perdiendo grasa → bajar calorías";
+      recomendacion = "\t\nNo estás perdiendo grasa → \t\nbajar calorías";
     }
 
     return {
       CambioMasaMagra: cambioMagra.toFixed(2),
       CambioMasaGrasa: cambioGrasa.toFixed(2),
-      NuevaKcal: kcalActuales + ajuste,
+      NuevaKcal: Math.round( kcalActuales + ajuste ),
       Recomendacion: recomendacion
     };
   }

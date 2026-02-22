@@ -551,14 +551,14 @@
     }
     else if (cambioGrasa >= 0) {
       ajuste = -150;
-      recomendacion = "Perdiendo grasa ↑ calorías";
+      recomendacion = "Pérdida grasa ↑ calorías";
     }
 
     return {
       CambioMasaMagra: cambioMagra.toFixed(2),
       CambioMasaGrasa: cambioGrasa.toFixed(2),
       NuevaKcal: Math.round( kcalActuales + ajuste ),
-      Recomendacion: recomendacion
+      Recomendar: recomendacion
     };
   }
 

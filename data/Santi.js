@@ -25,7 +25,7 @@ const alimentos = {
         "Merienda": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
             },
-            { "nombre": "Pechuga de pollo", "kcal": 89, "proteina": 18.1, "carbs": 1, "grasa": 1.7
+            { "nombre": "Pechuga de Pollo", "kcal": 89, "proteina": 18.1, "carbs": 1, "grasa": 1.7
             },
             { "nombre": "Pechuga de pavo", "kcal": 91, "proteina": 19.5, "carbs": 1, "grasa": 1.3
             }
@@ -172,7 +172,7 @@ const alimentos = {
         {"nombre": "Nueces", "kcal": 100, "proteina": 2, "carbs": 2, "grasa": 10}
       ],
       "Comida": [
-        {"nombre": "Pechuga pollo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3},
+        {"nombre": "Pechuga Pollo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3},
         {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1},
         {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10},
         {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
@@ -194,7 +194,7 @@ const alimentos = {
         {"nombre": "manzana", "kcal": 80, "proteina": 0, "carbs": 21, "grasa": 0}
       ],
       "Media mañana": [
-        {"nombre": "queso_fresco", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0},
+        {"nombre": "Queso fresco", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0},
         {"nombre": "Almendras", "kcal": 90, "proteina": 3, "carbs": 3, "grasa": 7}
       ],
       "Comida": [
@@ -232,7 +232,7 @@ const alimentos = {
         {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
       ],
       "Cena": [
-        {"nombre": "pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
+        {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
         {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0},
         {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
       ]
@@ -307,7 +307,7 @@ const alimentos = {
         {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
       ],
       "Cena": [
-        {"nombre": "pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
+        {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3},
         {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0},
         {"nombre": "Aceite oliva", "kcal": 90, "proteina": 0, "carbs": 0, "grasa": 10}
       ]
@@ -316,10 +316,10 @@ const alimentos = {
       "Desayuno": [
         {"nombre": "Huevos enteros", "kcal": 210, "proteina": 18, "carbs": 1, "grasa": 15},
         {"nombre": "Avena", "kcal": 230, "proteina": 8, "carbs": 38, "grasa": 4},
-        {"nombre": "frutos_rojos",  "kcal": 50, "proteina": 1, "carbs": 12, "grasa": 0}
+        {"nombre": "Frutos rojos",  "kcal": 50, "proteina": 1, "carbs": 12, "grasa": 0}
       ],
       "Media mañana": [
-        {"nombre": "queso_fresco", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0},
+        {"nombre": "Queso fresco", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0},
         {"nombre": "Almendras", "kcal": 90, "proteina": 3, "carbs": 3, "grasa": 7}
       ],
       "Comida": [

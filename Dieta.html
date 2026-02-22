@@ -517,7 +517,7 @@
       },
       Macros: {
         Proteina_g: Math.round(peso * proteina),
-        Nota: "Proteína aumentada \t\nprogresivamente con la edad"
+        Nota: "Aumentar la Proteína "
       }
     };
   }
@@ -543,15 +543,15 @@
     let recomendacion = "";
 
     if (cambioGrasa < 0 && cambioMagra >= 0) {
-      recomendacion = "\t\nExcelente: \t\npierdes grasa manteniendo músculo";
+      recomendacion = "Recomposición";
     }
     else if (cambioMagra < 0) {
       ajuste = +150;
-      recomendacion = "\t\nPosible pérdida muscular → \t\nsubir calorías y proteína";
+      recomendacion = "Pérdida muscular ↓ calorías";
     }
     else if (cambioGrasa >= 0) {
       ajuste = -150;
-      recomendacion = "\t\nNo estás perdiendo grasa → \t\nbajar calorías";
+      recomendacion = "Perdiendo grasa ↑ calorías";
     }
 
     return {

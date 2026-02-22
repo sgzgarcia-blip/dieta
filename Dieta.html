@@ -144,7 +144,7 @@
     const ctxG = document.getElementById("chartG");
     const ctxC = document.getElementById("chartC");
     const ctx = document.getElementById("chart");
-    let chartG,chartC,chart;
+    let chartG,chartC,chart,antGCorporal, antPeso;
 
     document.querySelector('h1').textContent = document.querySelector('h1').textContent.replace("#name#", name);
 
@@ -216,7 +216,7 @@
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
     diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} kcal\n\t Proteínas: ${Math.round(totalProte)} g\n\t Carbohidratos: ${Math.round(totalCabs)} g\n\t Grasas: ${Math.round(totalGrasa)} g`;
-    const resultadoEntreno = calcularPlan({
+    const resultadoEntreno = planInteligente({
       edad: edad,
       peso: peso,
       altura: altura,
@@ -235,12 +235,19 @@
     </pre>
     <h4>% Grasa corporal:</h4><pre>
     🧍 % Grasa: ${gCorporal}
+        ${pintaJSON(ajustePorGrasa({
+              pesoAnterior: antPeso,
+              grasaAnterior: antGCorporal,
+              pesoActual: peso,
+              grasaActual: gCorporal,
+              kcalActuales: totalKcal
+              }))}
     <hr></pre>
     <h4>Dieta:</h4><pre>
     \t${diet}
     <hr>
     🏋️ <b>Entrenamiento</b>
-    \t${pintaEntreno(resultadoEntreno)}</pre>
+    \t${pintaJSON(resultadoEntreno)}</pre>
     `;
 
       resultado.innerHTML = result;
@@ -356,11 +363,11 @@
       return paint;
     }
 
-    function pintaEntreno (resultadoEntreno, base = true) {
+    function pintaJSON (resultadoEntreno, base = true) {
         let entreno = "";
         Object.entries(resultadoEntreno).forEach(([key, value]) => {
           // Entreno
-          entreno = entreno + `\n        ${base?"-":"  "}${key}: ${typeof value === "object" ? pintaEntreno(value, false) : value}`;
+          entreno = entreno + `\n        ${base?"-":"  "}${key}: ${typeof value === "object" ? pintaJSON(value, false) : value}`;
         });
         return entreno;
     }
@@ -431,56 +438,128 @@
           tSelect.selectedIndex = 0;
         });
       }
+  }
+
+  function planInteligente({
+  edad,
+  peso,
+  altura,
+  kcalActuales,
+  factorActividad
+  }) {
+
+    // 1️⃣ BMR base (Mifflin St Jeor)
+    const bmrBase = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
+
+    // 2️⃣ Ajuste metabólico progresivo por edad
+    let ajusteEdad = 1;
+
+    if (edad > 30) {
+      const decadas = (edad - 30) / 10;
+      ajusteEdad = 1 - (decadas * 0.01); // -1% por década
     }
 
-    function calcularPlan({ edad, peso, altura, kcalActuales, factorActividad }) {
+    if (edad >= 50) ajusteEdad -= 0.02; // ajuste extra recuperación
 
-    // 1️⃣ BMR (Mifflin St Jeor - Hombre)
-    const bmr = (10 * peso) + (6.25 * altura) - (5 * edad) + 5;
+    const bmrAjustado = bmrBase * ajusteEdad;
 
-    // 2️⃣ Factor actividad según días
-    const tdee = bmr * factorActividad;
+    const tdee = bmrAjustado * factorActividad;
 
-    // 3️⃣ Diferencia calórica
+    // 4️⃣ Fase calórica
     const diferencia = kcalActuales - tdee;
-
     let fase;
-    let recomendacion;
-
+    let diasEntreno;
     if (diferencia < -300) {
       fase = "Definición";
-      recomendacion = {
-        diasFuerza: 4,
-        repeticiones: "8-12",
-        seriesPorMusculo: "10-14",
-        cardio: "2-3 sesiones zona 2"
-      };
-    } 
-    else if (diferencia > 300) {
+      diasEntreno = 4;
+    } else if (diferencia > 300) {
       fase = "Volumen";
-      recomendacion = {
-        diasFuerza: 5,
-        repeticiones: "6-12",
-        seriesPorMusculo: "12-18",
-        cardio: "1-2 sesiones suaves"
-      };
-    } 
-    else {
+      diasEntreno = 5;
+    } else {
       fase = "Recomposición";
-      recomendacion = {
-        diasFuerza: 4,
-        repeticiones: "8-12",
-        seriesPorMusculo: "12-15",
-        cardio: "2 sesiones opcionales"
-      };
+      diasEntreno = 4;
+    }
+
+    // 5️⃣ Ajuste entrenamiento por edad
+    let volumenBase = 14;
+    let intensidad = "8-12 reps";
+    let frecuencia = 1;
+
+    if (edad < 35) {
+      volumenBase = 16;
+      frecuencia = 1;
+    }
+    else if (edad < 50) {
+      volumenBase = 14;
+      frecuencia = 1.5;
+    }
+    else {
+      volumenBase = 10;
+      frecuencia = 2;
+      intensidad = "8-12 + 12-15 reps";
+    }
+
+    // 6️⃣ Ajuste proteína dinámico
+    let proteina = 2.0;
+
+    if (edad >= 50) proteina = 2.3;
+    else if (edad >= 40) proteina = 2.2;
+
+    return {
+      Edad: edad,
+      BMR_Ajustado: Math.round(bmrAjustado),
+      TDEE: Math.round(tdee),
+      Fase: fase,
+      Entrenamiento: {
+        SeriesPorMusculoSemana: volumenBase,
+        FrecuenciaRecomendada: frecuencia,
+        RangoReps: intensidad,
+        DiasFuerzaIdeales: diasEntreno >= 4 ? 4 : diasEntreno
+      },
+      Macros: {
+        Proteina_g: Math.round(peso * proteina),
+        Nota: "Proteína aumentada progresivamente con la edad"
+      }
+    };
+  }
+
+  function ajustePorGrasa({
+  pesoAnterior,
+  grasaAnterior,
+  pesoActual,
+  grasaActual,
+  kcalActuales
+  }) {
+
+    const masaMagraAnterior = pesoAnterior * (1 - grasaAnterior / 100);
+    const masaMagraActual = pesoActual * (1 - grasaActual / 100);
+
+    const masaGrasaAnterior = pesoAnterior * (grasaAnterior / 100);
+    const masaGrasaActual = pesoActual * (grasaActual / 100);
+
+    const cambioMagra = masaMagraActual - masaMagraAnterior;
+    const cambioGrasa = masaGrasaActual - masaGrasaAnterior;
+
+    let ajuste = 0;
+    let recomendacion = "";
+
+    if (cambioGrasa < 0 && cambioMagra >= 0) {
+      recomendacion = "Excelente: pierdes grasa manteniendo músculo";
+    }
+    else if (cambioMagra < 0) {
+      ajuste = +150;
+      recomendacion = "Posible pérdida muscular → subir calorías y proteína";
+    }
+    else if (cambioGrasa >= 0) {
+      ajuste = -150;
+      recomendacion = "No estás perdiendo grasa → bajar calorías";
     }
 
     return {
-      BMR: Math.round(bmr),
-      TDEE: Math.round(tdee),
-      DiferenciaCalorica: Math.round(diferencia),
-      Fase: fase,
-      PlanEntrenamiento: recomendacion
+      CambioMasaMagra: cambioMagra.toFixed(2),
+      CambioMasaGrasa: cambioGrasa.toFixed(2),
+      NuevaKcal: kcalActuales + ajuste,
+      Recomendacion: recomendacion
     };
   }
 
@@ -521,6 +600,8 @@
       actividadEl.value = d.actividad;
       objetivoEl.value = d.objetivo;
       addOptionTipoD();
+      antPeso = d.peso;
+      antGCorporal = grasaCorporal(d.sexo, d.cintura, d.cadera, d.cuello,  d.altura);
       tipoDEl.value = d.tipoD;
       resultado.innerHTML = d.result;
     };

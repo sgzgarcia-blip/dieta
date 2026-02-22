@@ -160,5 +160,8 @@ const alimentos = {
             { "nombre": "Verduras o Ensalada", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5
             }
         ]
-    }
+    },
+
+
+    
 }

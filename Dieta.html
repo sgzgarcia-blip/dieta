@@ -128,7 +128,15 @@
       "Comida": `🍽️`,
       "Merienda": `🕔`,
       "Cena": `🌙`
-    }
+    };
+
+    const porcentajes = {
+      "Desayuno": 0.25,
+      "Media mañana": 0.1,
+      "Comida": 0.35,
+      "Merienda": 0.1,
+      "Cena": 0.2
+    };
 
     const sexoEl = document.getElementById("sexo");
     const edadEl = document.getElementById("edad");
@@ -195,12 +203,11 @@
 
       const objetivos = {};
       !alimentos.hasOwnProperty(tipoD) || Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
-        let lon = (1/Object.entries(alimentos[tipoD]).length).toFixed(3);
         objetivos[key] = {
-          kcal: Math.round(calorias * lon),
-          prote: Math.round(proteinas * lon),
-          carbs: Math.round(carbos * lon),
-          grasa: Math.round(grasas * lon)
+          kcal: Math.round(calorias * porcentajes[key]),
+          prote: Math.round(proteinas * porcentajes[key]),
+          carbs: Math.round(carbos * porcentajes[key]),
+          grasa: Math.round(grasas * porcentajes[key])
         };
       });
 

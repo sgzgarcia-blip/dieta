@@ -39,7 +39,7 @@ const alimentos = {
             }
         ]
     },
-  "Dieta Santi B": {
+    "Dieta Santi B": {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
             },

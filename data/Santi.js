@@ -33,6 +33,8 @@ const alimentos = {
         "Cena": [
             { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5
             },
+            { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
+            },
             { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68
             },
             { "nombre": "Miel", "kcal": 332, "proteina": 0, "carbs": 83, "grasa": 0

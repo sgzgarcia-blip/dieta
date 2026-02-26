@@ -38,8 +38,6 @@ const alimentos = {
             { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14
             },
             { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68
-            },
-            { "nombre": "Miel", "kcal": 332, "proteina": 0, "carbs": 83, "grasa": 0
             }
         ]
     },

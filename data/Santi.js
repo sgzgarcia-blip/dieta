@@ -79,6 +79,44 @@ const alimentos = {
             }
         ]
     },
+       "Dieta Santi C": {
+        "Desayuno": [
+            { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
+            },
+            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7
+            },
+            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6
+            },
+            { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
+            }
+        ],
+        "Media mañana": [
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
+            }
+        ],
+        "Comida": [
+            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1
+            },
+            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8
+            },
+            { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
+            }
+        ],
+        "Merienda": [
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
+            },
+            { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
+            }
+        ],
+        "Cena": [
+            { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5
+            },
+            { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
+            },
+            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14
+            }
+        ]
+    },
    "Dieta Carla A": {
         "Desayuno": [
             { "nombre": "Zumo de naranja", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1

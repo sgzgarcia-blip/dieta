@@ -206,7 +206,7 @@
       setTimeout(() => {
         calcular();
         loaderOff();
-      }, 500);
+      }, 50);
     }
     
     function loaderOn(){
@@ -274,7 +274,7 @@
       totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
-    diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} kcal\n\t Proteínas: ${Math.round(totalProte)} g\n\t Carbohidratos: ${Math.round(totalCabs)} g\n\t Grasas: ${Math.round(totalGrasa)} g`;
+    diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} ~ ${calorias} kcal\n\t Proteínas: ${Math.round(totalProte)} ~ ${proteinas} g\n\t Carbohidratos: ${Math.round(totalCabs)} ~ ${carbos} g\n\t Grasas: ${Math.round(totalGrasa)} ~ ${grasas} g`;
 
     const gCorporal = grasaCorporal(sexo, cintura, cadera, cuello,  altura);
 

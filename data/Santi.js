@@ -43,9 +43,9 @@ const alimentos = {
             }
         ],
         "Comida": [
-            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 75
+            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 100
             },
-            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75
+            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 100
             },
             { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
             }

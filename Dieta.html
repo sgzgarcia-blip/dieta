@@ -66,6 +66,30 @@
     canvas {
       margin-top: 30px
     }
+
+    .btn-loader {
+      position: relative;
+      padding: 10px 20px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .spinner {
+      width: 10px;
+      height: 10px;
+      border: 3px solid #ddd;
+      border-top: 3px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
   </style>
 </head>
 
@@ -98,7 +122,10 @@
       <select class="g0" id="tipoD" title="Dietas" >
         <option value="PorDefecto">PorDefecto</option>
       </select>
-      <button onclick="calcular()">Calcular dieta</button>
+      <button onclick="init()" class="btn-loader">
+          <span class="texto">Calcular dieta</span>
+          <div class="spinner" style="display:none;"></div>
+      </button>
     </form>
     <div id="resultado"></div>
     <canvas id="chartG"></canvas>
@@ -153,6 +180,9 @@
     const ctxG = document.getElementById("chartG");
     const ctxC = document.getElementById("chartC");
     const ctx = document.getElementById("chart");
+    const boton = form.querySelector(".btn-loader");
+    const spinner = boton.querySelector(".spinner");
+    const texto = boton.querySelector(".texto");
     let chartG,chartC,chart,antGCorporal, antPeso;
 
     document.querySelector('h1').textContent = document.querySelector('h1').textContent.replace("#name#", name);
@@ -172,6 +202,25 @@
       localStorage.setItem("history", JSON.stringify(history.slice(-10)));
     };
 
+    function init()  {
+      loaderOn();
+      setTimeout(() => {
+        calcular();
+        loaderOff();
+      }, 500);
+    }
+    
+    function loaderOn(){
+      // Mostrar spinner y desactivar botón
+      spinner.style.display = "inline-block";
+      boton.disabled = true;
+    }
+
+    function loaderOff(){
+      // Restaurar botón
+      spinner.style.display = "none";
+      boton.disabled = false;
+    }
 
     function calcular() {
 
@@ -185,6 +234,7 @@
       const actividad = +actividadEl.value;
       const objetivo = objetivoEl.value;
       const tipoD = tipoDEl.value;
+
       let tmb = sexo === "hombre"
         ? 10 * peso + 6.25 * altura - 5 * edad + 5
         : 10 * peso + 6.25 * altura - 5 * edad - 161;
@@ -267,6 +317,7 @@
 
       saveHistory({ date: new Date().toLocaleDateString(), gCorporal, totalKcal, totalProte, totalCabs, totalGrasa });
       drawChart();
+      
     }
 
     function optimizadorFlexible(alimentos, objetivos, prioridad) {
@@ -308,7 +359,7 @@
         );
       }
 
-      let baseCoste = 0, antbaseCoste = -1;
+      let baseCoste = 1, antbaseCoste = -1;
       //for (let iter = 0; iter < iteraciones; iter++) {
       while ( baseCoste != antbaseCoste ) {
         

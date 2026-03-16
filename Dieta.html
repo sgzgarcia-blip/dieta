@@ -182,7 +182,6 @@
     const ctx = document.getElementById("chart");
     const boton = form.querySelector(".btn-loader");
     const spinner = boton.querySelector(".spinner");
-    const texto = boton.querySelector(".texto");
     let chartG,chartC,chart,antGCorporal, antPeso;
 
     document.querySelector('h1').textContent = document.querySelector('h1').textContent.replace("#name#", name);
@@ -271,7 +270,7 @@
     Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
       // 🍽 alimentos (aprox)
       let result = optimizadorFlexible(value, objetivos[key], obtenerPrioridades(objetivo));
-      diet += `\n    ${icons[key]} <b>${key}</b>: \n${pintar(alimentos[tipoD][key], result)}`;
+      diet += `\n    ${icons[key]} <b>${key}</b>: \n${pintar(alimentos[tipoD][key], objetivos[key], result)}`;
       totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
@@ -419,12 +418,12 @@
           };
       }
     }
-    function pintar(alimentos, result) {
+    function pintar(alimentos, objetivos, result) {
       var paint = "";
       result.gramos.forEach((g, i) => {
         paint += `\t-${alimentos[i].nombre}: ${g} g\n`;
       });
-      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} g\n\t Grasas: ${Math.round(result.totales.grasa)} g`;
+      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} ~ ${Math.round(objetivos.kcal)} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} ~ ${Math.round(objetivos.prote)} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} ~ ${Math.round(objetivos.carbs)} g\n\t Grasas: ${Math.round(result.totales.grasa)} ~ ${Math.round(objetivos.grasa)} g`;
       return paint;
     }
 

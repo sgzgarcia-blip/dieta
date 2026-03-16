@@ -5,7 +5,7 @@ const alimentos = {
             },
             { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40
             },
-            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 30
+            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 50
             },
             { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
             }

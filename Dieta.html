@@ -274,7 +274,7 @@
       totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
-    diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} ~ ${calorias} kcal\n\t Proteínas: ${Math.round(totalProte)} ~ ${proteinas} g\n\t Carbohidratos: ${Math.round(totalCabs)} ~ ${carbos} g\n\t Grasas: ${Math.round(totalGrasa)} ~ ${grasas} g`;
+    diet += `\n\n\t<b>Suma de totales</b>: \n\t Calorías: ${Math.round(totalKcal)} ~ ${calorias} ${Math.round(totalKcal) == calorias ? "" : Math.round(totalKcal) > calorias ? "↑" : "↓"} kcal\n\t Proteínas: ${Math.round(totalProte)} ~ ${proteinas} ${Math.round(totalProte) == proteinas ? "" : Math.round(totalProte) > proteinas ? "↑" : "↓"} g\n\t Carbohidratos: ${Math.round(totalCabs)} ~ ${carbos} ${Math.round(totalCabs) == carbos ? "" : Math.round(totalCabs) > carbos ? "↑" : "↓"} g\n\t Grasas: ${Math.round(totalGrasa)} ~ ${grasas} ${Math.round(totalGrasa) == grasas ? "" : Math.round(totalGrasa) > grasas ? "↑" : "↓"} g`;
 
     const gCorporal = grasaCorporal(sexo, cintura, cadera, cuello,  altura);
 
@@ -423,7 +423,7 @@
       result.gramos.forEach((g, i) => {
         paint += `\t-${alimentos[i].nombre}: ${g} g\n`;
       });
-      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} ~ ${Math.round(objetivos.kcal)} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} ~ ${Math.round(objetivos.prote)} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} ~ ${Math.round(objetivos.carbs)} g\n\t Grasas: ${Math.round(result.totales.grasa)} ~ ${Math.round(objetivos.grasa)} g`;
+      paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} ~ ${Math.round(objetivos.kcal)} ${Math.round(result.totales.kcal) == Math.round(objetivos.kcal) ? "" : Math.round(result.totales.kcal) == Math.round(objetivos.kcal) ? "↑" : "↓"} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} ~ ${Math.round(objetivos.prote)} ${Math.round(result.totales.prote) == Math.round(objetivos.prote) ? "" : Math.round(result.totales.prote) == Math.round(objetivos.prote) ? "↑" : "↓"} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} ~ ${Math.round(objetivos.carbs)} ${Math.round(result.totales.carbs) == Math.round(objetivos.carbs) ? "" : Math.round(result.totales.carbs) == Math.round(objetivos.carbs) ? "↑" : "↓"} g\n\t Grasas: ${Math.round(result.totales.grasa)} ~ ${Math.round(objetivos.grasa)} ${Math.round(result.totales.grasa) == Math.round(objetivos.grasa) ? "" : Math.round(result.totales.grasa) == Math.round(objetivos.grasa) ? "↑" : "↓"} g`;
       return paint;
     }
 

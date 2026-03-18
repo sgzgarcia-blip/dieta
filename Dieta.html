@@ -119,9 +119,7 @@
       <input class="g2" type="number" id="cuello" placeholder="Cuello (cm)" title="Cuello" required>
       <input class="g2" type="number" id="cintura" placeholder="Cintura (cm)" title="Cintura" required>
       <input class="g2" type="hidden" id="cadera" placeholder="Cadera (cm)" title="Cadera" >
-      <select class="g0" id="tipoD" title="Dietas" >
-        <option value="PorDefecto">PorDefecto</option>
-      </select>
+      <select class="g0" id="tipoD" title="Dietas" ></select>
       <button onclick="init()" class="btn-loader">
           <span class="texto">Calcular dieta</span>
           <div class="spinner" style="display:none;"></div>
@@ -146,8 +144,6 @@
     script.src = `./data/${name}.js`;
     script.async = false;
     document.head.appendChild(script);
-
-    setTimeout(()=> { onloadCache(); }, 100);
 
     const icons = {
       "Desayuno": `🌅`,
@@ -189,6 +185,7 @@
     seleccionarOpcion(sexoEl);
 
     window.onload = function() {
+      addOptionTipoD();;
       onloadCache();
     }
 
@@ -663,7 +660,6 @@
       caderaEl.value = d.cadera;
       actividadEl.value = d.actividad;
       objetivoEl.value = d.objetivo;
-      addOptionTipoD();
       antPeso = d.peso;
       antGCorporal = grasaCorporal(d.sexo, d.cintura, d.cadera, d.cuello,  d.altura);
       tipoDEl.value = d.tipoD;

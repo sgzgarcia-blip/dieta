@@ -31,11 +31,11 @@ const alimentos = {
             },
             { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 40
             },
-            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 40
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
             },
-            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 10
             },
-            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 21
+            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10
             }
         ]
     },

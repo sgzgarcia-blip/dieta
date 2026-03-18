@@ -7,6 +7,8 @@ const alimentos = {
             },
             { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 50
             },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
+            },
             { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
             }
         ],
@@ -28,6 +30,12 @@ const alimentos = {
             { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
             },
             { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 40
+            },
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 40
+            },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
+            },
+            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 21
             }
         ]
     },
@@ -38,6 +46,8 @@ const alimentos = {
             { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40
             },
             { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 50
+            },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
             },
             { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
             }
@@ -62,6 +72,10 @@ const alimentos = {
             { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
             },
             { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 40
+            },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
+            },
+            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 21
             }
         ]
     },
@@ -70,6 +84,8 @@ const alimentos = {
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
             },
             { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 40
+            },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 20
             },
             { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
             }

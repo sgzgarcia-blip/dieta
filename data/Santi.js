@@ -29,13 +29,9 @@ const alimentos = {
             },
             { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
             },
-            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 40
+            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 30
             },
-            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
-            },
-            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 10
-            },
-            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 10
             }
         ]
     },

@@ -127,9 +127,7 @@ const alimentos = {
             }
         ],
         "Comida": [
-            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 75
-            },
-            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75
+            { "nombre": "Lentejas", "kcal": 89, "proteina": 8.2, "carbs": 10.7, "grasa": 0.4, "gramos": 210
             },
             { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
             }
@@ -164,12 +162,12 @@ const alimentos = {
         ],
         "Media mañana": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
+            },
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 40
             }
         ],
         "Comida": [
-            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1
-            },
-            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8
+            { "nombre": "Garbanzos", "kcal": 90, "proteina": 5.5, "carbs": 9.5, "grasa": 2.2, "gramos": 210
             },
             { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
             }
@@ -212,6 +210,10 @@ const alimentos = {
             { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1
             },
             { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8
+            },
+            { "nombre": "Lentejas", "kcal": 89, "proteina": 8.2, "carbs": 10.7, "grasa": 0.4
+            },
+            { "nombre": "Garbanzos", "kcal": 90, "proteina": 5.5, "carbs": 9.5, "grasa": 2.2
             },
             { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
             }

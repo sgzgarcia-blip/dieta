@@ -418,7 +418,9 @@
     function pintar(alimentos, objetivos, result) {
       var paint = "";
       result.gramos.forEach((g, i) => {
-        paint += `\t-${alimentos[i].nombre}: ${alimentos[i].gramos ? g : "<span style='color: red;'>" + g + "</span>"} g\n`;
+        if (g > 0) {
+          paint += `\t-${alimentos[i].nombre}: ${alimentos[i].gramos ? g : "<span style='color: red;'>" + g + "</span>"} g\n`;
+        }      
       });
       paint += `\n\tTotales: \n\t calorías: ${Math.round(result.totales.kcal)} ~ ${Math.round(objetivos.kcal)} ${Math.round(result.totales.kcal) == Math.round(objetivos.kcal) ? "" : Math.round(result.totales.kcal) > Math.round(objetivos.kcal) ? "↑" : "↓"} kcal\n\t Proteínas: ${Math.round(result.totales.prote)} ~ ${Math.round(objetivos.prote)} ${Math.round(result.totales.prote) == Math.round(objetivos.prote) ? "" : Math.round(result.totales.prote) > Math.round(objetivos.prote) ? "↑" : "↓"} g\n\t Carbohidratos: ${Math.round(result.totales.carbs)} ~ ${Math.round(objetivos.carbs)} ${Math.round(result.totales.carbs) == Math.round(objetivos.carbs) ? "" : Math.round(result.totales.carbs) > Math.round(objetivos.carbs) ? "↑" : "↓"} g\n\t Grasas: ${Math.round(result.totales.grasa)} ~ ${Math.round(objetivos.grasa)} ${Math.round(result.totales.grasa) == Math.round(objetivos.grasa) ? "" : Math.round(result.totales.grasa) > Math.round(objetivos.grasa) ? "↑" : "↓"} g`;
       return paint;

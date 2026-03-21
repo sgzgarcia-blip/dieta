@@ -3,9 +3,9 @@ const alimentos = {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 350
             },
-            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 20
+            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40
             },
-            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 20
+            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 40
             },
             { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 10
             },
@@ -24,6 +24,8 @@ const alimentos = {
         ],
         "Merienda": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
+            },
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 15
             },
             { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 180
             }
@@ -61,7 +63,7 @@ const alimentos = {
         "Merienda": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
             },
-            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 40
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
             }
         ],
         "Cena": [
@@ -71,9 +73,9 @@ const alimentos = {
             },
             { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 30
             },
-            { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5, "gramos": 100
+            { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5, "gramos": 40
             },
-            { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 100
+            { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 50
             }
         ]
     },
@@ -98,6 +100,8 @@ const alimentos = {
         ],
         "Merienda": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 40
+            },
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
             },
             { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
             }

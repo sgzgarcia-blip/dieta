@@ -97,7 +97,7 @@ const alimentos = {
             }
         ],
         "Merienda": [
-            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 40
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
             },
             { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
             },
@@ -137,7 +137,7 @@ const alimentos = {
         "Merienda": [
             { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
             },
-            { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 180
+            { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
             }
         ],
         "Cena": [
@@ -149,7 +149,7 @@ const alimentos = {
             },
             { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5
             },
-            { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8
+            { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 50
             }
         ]
     },
@@ -157,17 +157,17 @@ const alimentos = {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
             },
-            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7
+            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40
             },
-            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6
+            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 40
             },
-            { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
+            { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
             }
         ],
         "Media mañana": [
-            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
             },
-            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 40
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68
             }
         ],
         "Comida": [
@@ -177,21 +177,21 @@ const alimentos = {
             }
         ],
         "Merienda": [
-            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
             },
-            { "nombre": "Pechuga de Pollo", "kcal": 89, "proteina": 18.1, "carbs": 1, "grasa": 1.7
+            { "nombre": "Pechuga de Pollo", "kcal": 89, "proteina": 18.1, "carbs": 1, "grasa": 1.7, "gramos": 50
             },
             { "nombre": "Pechuga de pavo", "kcal": 91, "proteina": 19.5, "carbs": 1, "grasa": 1.3
             }
         ],
         "Cena": [
-            { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5
+            { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5, "gramos": 200
             },
             { "nombre": "Queso batido", "kcal": 46, "proteina": 8, "carbs": 3.5, "grasa": 0.5
             },
-            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14
+            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 30
             },
-            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 10
             }
         ]
     },

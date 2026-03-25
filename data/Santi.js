@@ -149,13 +149,13 @@ const alimentos = {
         "Cena": [
             { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5, "gramos": 200
             },
-            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 20
+            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 15
             },
-            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0
+            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10
             },
             { "nombre": "Caldo", "kcal": 4.2, "proteina": 0.3, "carbs": 0.2, "grasa": 0.3, "gramos": 80
             },
-            { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 20
+            { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 15
             },
             { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5, "gramos": 50
             },

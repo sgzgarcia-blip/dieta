@@ -117,6 +117,52 @@ const alimentos = {
             }
         ]
     },
+    "Dieta Santi A4": {
+        "Desayuno": [
+            { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
+            },
+            { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 25
+            },
+            { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 25
+            },
+            { "nombre": "Passas", "kcal": 324, "proteina": 3.1, "carbs": 73, "grasa": 1.1, "gramos": 10
+            },
+            { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120
+            }
+        ],
+        "Comida": [
+            { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50
+            },
+            { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50
+            },
+            { "nombre": "Pollo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
+            }
+        ],
+        "Merienda": [
+            { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
+            },
+            { "nombre": "Nueces", "kcal": 709, "proteina": 18, "carbs": 2.9, "grasa": 68, "gramos": 20
+            },
+            { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
+            }
+        ],
+        "Cena": [
+            { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5, "gramos": 200
+            },
+            { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 30
+            },
+            { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10
+            },
+            { "nombre": "Caldo", "kcal": 4.2, "proteina": 0.3, "carbs": 0.2, "grasa": 0.3, "gramos": 120
+            },
+            { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 30
+            },
+            { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5, "gramos": 50
+            },
+            { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8
+            }
+        ]
+    },
     "Dieta Santi B": {
         "Desayuno": [
             { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5

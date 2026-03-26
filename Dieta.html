@@ -321,7 +321,7 @@
       //const iteraciones = 6000;
       const learningRate = 0.01;
 
-      let gramos = new Array(alimentos.length).fill(100);
+      let gramos = new Array(alimentos.length).fill(2500);
 
       function calcularTotales(gs) {
         let kcal = 0, prote = 0, carbs = 0, grasa = 0;
@@ -357,8 +357,8 @@
 
       let baseCoste = 1, antbaseCoste = -1;
       //for (let iter = 0; iter < iteraciones; iter++) {
-      while ( baseCoste != antbaseCoste ) {
-        
+      while ( objetivos.kcal < calcularTotales(gramos).kcal ) {
+
         antbaseCoste = baseCoste;
         baseCoste = coste(gramos);
 

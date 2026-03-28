@@ -369,7 +369,7 @@
           gramos[i] = alimentos[i].gramos ? alimentos[i].gramos : gramos[i] - learningRate * gradiente;
 
           if (gramos[i] < 0)  { 
-            pesoG = pesoG - 50;
+            pesoG = pesoG - 30;
             gramos[i] = pesoG;
           }
         }

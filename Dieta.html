@@ -318,10 +318,10 @@
 
     function optimizadorFlexible(alimentos, objetivos, prioridad) {
 
-      //const iteraciones = 6000;
       const learningRate = 0.01;
+      var pesoG = 10000; 
 
-      let gramos = new Array(alimentos.length).fill(2500);
+      let gramos = new Array(alimentos.length).fill(pesoG);
 
       function calcularTotales(gs) {
         let kcal = 0, prote = 0, carbs = 0, grasa = 0;
@@ -355,11 +355,8 @@
         );
       }
 
-      let baseCoste = 1, antbaseCoste = -1;
-      //for (let iter = 0; iter < iteraciones; iter++) {
       while ( objetivos.kcal < calcularTotales(gramos).kcal ) {
 
-        antbaseCoste = baseCoste;
         baseCoste = coste(gramos);
 
         for (let i = 0; i < gramos.length; i++) {
@@ -370,10 +367,12 @@
           const gradiente = coste(copia) - baseCoste;
 
           gramos[i] = alimentos[i].gramos ? alimentos[i].gramos : gramos[i] - learningRate * gradiente;
-          //gramos[i] -= learningRate * gradiente;
 
-          if (gramos[i] < 0) gramos[i] = 0;
-
+          if (gramos[i] < 0)  { 
+            pesoG = pesoG - 10;
+            gramos[i] = pesoG;
+            console.log(pesoG);
+          }
         }
       }
 

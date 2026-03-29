@@ -250,8 +250,8 @@
       if (!alimentos.hasOwnProperty(tipoD)) return;
       const objetivos = {};
       let i = 0;
-      while (Object.entries(alimentos[tipoD]).filter(([key]) => !porcentajes[i].hasOwnProperty(key)).length != 0) { i++; };
-      Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
+      while (Object.entries(alimentos[tipoD]["dia"]).filter(([key]) => !porcentajes[i].hasOwnProperty(key)).length != 0) { i++; };
+      Object.entries(alimentos[tipoD]["dia"]).forEach(([key, value]) => {
             objetivos[key] = {
               kcal: Math.round(calorias * porcentajes[i][key]),
               prote: Math.round(proteinas * porcentajes[i][key]),
@@ -264,10 +264,10 @@
     let resultD = {};
     let diet = "";
     let totalKcal = 0, totalProte = 0, totalCabs = 0, totalGrasa = 0; 
-    Object.entries(alimentos[tipoD]).forEach(([key, value]) => {
+    Object.entries(alimentos[tipoD]["dia"]).forEach(([key, value]) => {
       // 🍽 alimentos (aprox)
       let result = optimizadorFlexible(value, objetivos[key], obtenerPrioridades(objetivo));
-      diet += `\n    ${icons[key]} <b>${key}</b>: \n${pintar(alimentos[tipoD][key], objetivos[key], result)}`;
+      diet += `\n    ${icons[key]} <b>${key}</b>: \n${pintar(alimentos[tipoD]["dia"][key], objetivos[key], result)}`;
       totalKcal += result.totales.kcal; totalProte += result.totales.prote; 
       totalCabs += result.totales.carbs; totalGrasa += result.totales.grasa;
     });
@@ -295,6 +295,9 @@
     <h4>Dieta:</h4><pre>
     \t${diet}
     <hr>
+    💊 <b>Suplementos</b>
+    \t${pintaJSON(alimentos[tipoD]["suplementos"])}
+    <hr>
     🏋️ <b>Entrenamiento</b>
     \t${pintaJSON(planInteligente({
                       edad: edad,
@@ -302,7 +305,8 @@
                       altura: altura,
                       kcalActuales: totalKcal,
                       factorActividad: actividad
-                    }))}</pre>
+                    }))}
+    <hr></pre>
     `;
 
       resultado.innerHTML = result;

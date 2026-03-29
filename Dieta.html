@@ -354,9 +354,10 @@
           varianza(gs) * prioridad.equilibrio
         );
       }
-
-      while ( objetivos.kcal < calcularTotales(gramos).kcal ) {
-
+      var antBaseCoste = -1, baseCoste = 1;
+      while (antBaseCoste != baseCoste && objetivos.kcal < calcularTotales(gramos).kcal ) {
+        //No hay alteración del coste
+        antBaseCoste = baseCoste;
         baseCoste = coste(gramos);
 
         for (let i = 0; i < gramos.length; i++) {

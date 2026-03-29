@@ -43,11 +43,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -89,11 +89,11 @@ const alimentos = {
         ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -139,11 +139,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -195,11 +195,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -241,11 +241,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -295,11 +295,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -365,11 +365,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -416,11 +416,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     },
@@ -469,11 +469,11 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g diarios",
-            "beta_alanina": "3-6g diarios",
-            "ashwagandha": "300-600mg diarios",
-            "cafeina": "100-200mg pre-entreno",
-            "bicarbonato_sodico": "0.2-0.3 g/kg pre-HIT",
+            "creatina_monohidrato": "5g",
+            "beta_alanina": "3-6g",
+            "ashwagandha": "300-600mg",
+            "cafeina": "100-200mg pre",
+            "bicarbonato": "0.2-0.3 g/kg",
             "magnesio": "200-400mg noche"
         }
     }

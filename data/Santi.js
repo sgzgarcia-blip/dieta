@@ -47,7 +47,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -93,7 +93,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -143,7 +143,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -199,7 +199,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -245,7 +245,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -299,7 +299,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -369,7 +369,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -420,7 +420,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     },
@@ -473,7 +473,7 @@ const alimentos = {
             "Beta_Alanina": "3-6g",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
-            "Bicarbonato": "0.2-0.3 g/kg pre-H",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
             "Magnesio": "200-400mg noche"
         }
     }

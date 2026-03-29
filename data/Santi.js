@@ -43,12 +43,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Santi A2": {
@@ -89,12 +89,12 @@ const alimentos = {
         ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Santi A3": {
@@ -139,12 +139,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Santi A4": {
@@ -195,12 +195,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Santi B": {
@@ -241,12 +241,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
    "Dieta Santi C": {
@@ -295,12 +295,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Santi All": {
@@ -365,12 +365,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
    "Dieta Carla A": {
@@ -416,12 +416,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     },
     "Dieta Carla B": {
@@ -469,12 +469,12 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g",
-            "beta_alanina": "3-6g",
-            "ashwagandha": "300-600mg",
-            "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg pre-HIT",
-            "magnesio": "200-400mg noche"
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3 g/kg pre-HIT",
+            "Magnesio": "200-400mg noche"
         }
     }
 }

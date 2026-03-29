@@ -42,7 +42,7 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g"
+            "Creatina_Monohidrato": "5g"
         }  
     },
     "Dieta Carla B": {
@@ -90,7 +90,7 @@ const alimentos = {
             ]
         },
         "suplementos": {
-            "creatina_monohidrato": "5g"
+            "Creatina_Monohidrato": "5g"
         }  
     }
 }

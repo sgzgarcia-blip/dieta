@@ -25,7 +25,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }  
     },
     "Martes": {
@@ -33,7 +33,7 @@ const alimentos = {
 
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }  
     },
     "Miercoles": {
@@ -60,7 +60,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }  
     },
     "Jueves": {
@@ -88,7 +88,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }  
     },
     "Viernes": {
@@ -117,7 +117,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }      
     },
     "Sábado": {
@@ -144,7 +144,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }
     },
     "Domingo": {
@@ -173,7 +173,7 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "creatina_monohidrato": "5g"
+        "Creatina_Monohidrato": "5g"
       }
     }
 }

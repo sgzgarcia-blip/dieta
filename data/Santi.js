@@ -47,7 +47,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -93,7 +93,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -143,7 +143,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -199,7 +199,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -245,7 +245,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -299,7 +299,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -369,7 +369,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -420,7 +420,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     },
@@ -473,7 +473,7 @@ const alimentos = {
             "beta_alanina": "3-6g",
             "ashwagandha": "300-600mg",
             "cafeina": "100-200mg pre",
-            "bicarbonato": "0.2-0.3 g/kg",
+            "bicarbonato": "25g pre-HIT",
             "magnesio": "200-400mg noche"
         }
     }

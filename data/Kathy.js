@@ -29,27 +29,43 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "Lev Alginina": "3CAP",
-        "Lev Benadon": "Media",
-        "Des MultiVitaminico": "1CAP",
-        "Des BCAA": "2CAP",
-        "Des EAA": "2CAP",
-        "Des Auxina 200mg": "1CAP",
-        "Com BCAA": "2CAP",
-        "Com EAA": "2CAP",
-        "Mer BCAA": "2CAP",
-        "Mer EAA": "2CAP",
-        "Mer MultiVitaminico": "1CAP",
-        "Cen BCAA": "2CAP",
-        "Cen EAA": "2CAP",
-        "Pre Tribulus": "3CAP",
-        "Pre Glutamina": "4CAP",
-        "Pos Glutamina": "4CAP",
-        "Pos Glutamina": "3CAP",
-        "Pos BCAA": "4CAP",
-        "Pos REDOXON 1g + C": "1CAP",
-        "Pos Acetilcisteina 600mg": "1CAP",
-        "Dor Alginina": "3CAP"
+        "Al levantarte": {
+          "Alginina": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "Auxina 200mg": "1CAP"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "4CAP",
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "REDOXON 1g + C": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Alginina": "3CAP"
+        }
       }  
     },
     "Dieta Kathy B": {
@@ -82,27 +98,44 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "Lev Alginina": "3CAP",
-        "Lev Benadon": "Media",
-        "Des MultiVitaminico": "1CAP",
-        "Des BCAA": "2CAP",
-        "Des EAA": "2CAP",
-        "Des Auxina 200mg": "1CAP",
-        "Com BCAA": "2CAP",
-        "Com EAA": "2CAP",
-        "Mer BCAA": "2CAP",
-        "Mer EAA": "2CAP",
-        "Mer MultiVitaminico": "1CAP",
-        "Cen BCAA": "2CAP",
-        "Cen EAA": "2CAP",
-        "Pre Tribulus": "3CAP",
-        "Pre Glutamina": "4CAP",
-        "Pos Glutamina": "4CAP",
-        "Pos Glutamina": "3CAP",
-        "Pos BCAA": "4CAP",
-        "Pos REDOXON 1g + C": "1CAP",
-        "Pos Acetilcisteina 600mg": "1CAP",
-        "Dor Alginina": "3CAP"
+        "Al levantarte": {
+          "Alginina": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "Auxina 200mg": "1CAP"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "4CAP",
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "REDOXON 1g + C": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Alginina": "3CAP"
+        }
+      
       }  
     },
     "Dieta Kathy C": {
@@ -135,27 +168,44 @@ const alimentos = {
         ]
       },
       "suplementos": {
-        "Lev Alginina": "3CAP",
-        "Lev Benadon": "Media",
-        "Des MultiVitaminico": "1CAP",
-        "Des BCAA": "2CAP",
-        "Des EAA": "2CAP",
-        "Des Auxina 200mg": "1CAP",
-        "Com BCAA": "2CAP",
-        "Com EAA": "2CAP",
-        "Mer BCAA": "2CAP",
-        "Mer EAA": "2CAP",
-        "Mer MultiVitaminico": "1CAP",
-        "Cen BCAA": "2CAP",
-        "Cen EAA": "2CAP",
-        "Pre Tribulus": "3CAP",
-        "Pre Glutamina": "4CAP",
-        "Pos Glutamina": "4CAP",
-        "Pos Glutamina": "3CAP",
-        "Pos BCAA": "4CAP",
-        "Pos REDOXON 1g + C": "1CAP",
-        "Pos Acetilcisteina 600mg": "1CAP",
-        "Dor Alginina": "3CAP"
+        "Al levantarte": {
+          "Alginina": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "Auxina 200mg": "1CAP"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2CAP"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "4CAP",
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "REDOXON 1g + C": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Alginina": "3CAP"
+        }
+      
       }  
     }
 }

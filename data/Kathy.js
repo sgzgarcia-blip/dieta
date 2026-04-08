@@ -205,7 +205,6 @@ const alimentos = {
         "Antes de dormir": {
           "Alginina": "3CAP"
         }
-      
       }  
     }
 }

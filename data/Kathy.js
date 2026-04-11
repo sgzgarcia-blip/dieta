@@ -59,8 +59,7 @@ const alimentos = {
         "Pos-entreno": {
           "Glutamina": "3CAP",
           "BCAA": "4CAP",
-          "Vitamina C": "1CAP",
-          "REDOXON": "1g",
+          "VitaminaC-REDOXON 1g": "1CAP",
           "Acetilcisteina 600mg": "1CAP"
         },
         "Antes de dormir": {
@@ -129,8 +128,7 @@ const alimentos = {
         "Pos-entreno": {
           "Glutamina": "3CAP",
           "BCAA": "4CAP",
-          "Vitamina C": "1CAP",
-          "REDOXON": "1g",
+          "VitaminaC-REDOXON 1g": "1CAP",
           "Acetilcisteina 600mg": "1CAP"
         },
         "Antes de dormir": {
@@ -198,8 +196,7 @@ const alimentos = {
         "Pos-entreno": {
           "Glutamina": "3CAP",
           "BCAA": "4CAP",
-          "Vitamina C": "1CAP",
-          "REDOXON": "1g",
+          "VitaminaC-REDOXON 1g": "1CAP",
           "Acetilcisteina 600mg": "1CAP"
         },
         "Antes de dormir": {

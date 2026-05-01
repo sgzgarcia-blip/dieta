@@ -219,7 +219,7 @@ const alimentos = {
         "Desayuno": {
           "MultiVitaminico": "1CAP",
           "BCAA": "2CAP",
-          "EAA": "2CAP",
+          "EAA": "2TAB",
           "Auxina E 200mg": "Perlita"
         },
         "Comida": {
@@ -288,7 +288,7 @@ const alimentos = {
         "Desayuno": {
           "MultiVitaminico": "1CAP",
           "BCAA": "2CAP",
-          "EAA": "2CAP",
+          "EAA": "2TAB",
           "Auxina E 200mg": "Perlita"
         },
         "Comida": {
@@ -356,7 +356,7 @@ const alimentos = {
         "Desayuno": {
           "MultiVitaminico": "1CAP",
           "BCAA": "2CAP",
-          "EAA": "2CAP",
+          "EAA": "2TAB",
           "Auxina E 200mg": "Perlita"
         },
         "Comida": {

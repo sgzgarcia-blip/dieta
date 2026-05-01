@@ -41,8 +41,8 @@ const alimentos = {
         "dia": {
             "Desayuno": [
                 { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
-                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
-                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 20 },
+                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 21 },
                 { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
                 { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
             ],
@@ -55,8 +55,9 @@ const alimentos = {
                 { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
             ],
             "Merienda": [
-                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
-                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 20 },
+                { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56}
             ],
             "Cena": [
                 { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},

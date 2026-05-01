@@ -17,8 +17,8 @@ const alimentos = {
                 { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
             ],
             "Merienda": [
-                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
-                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 },
+                { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56}
             ],
             "Cena": [
                 { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},

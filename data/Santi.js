@@ -3,7 +3,7 @@ const alimentos = {
         "dia": {
             "Desayuno": [
                 { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
-                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 20 },
                 { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 40 },
                 { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
                 { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
@@ -18,6 +18,7 @@ const alimentos = {
             ],
             "Merienda": [
                 { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 20 },
                 { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56}
             ],
             "Cena": [

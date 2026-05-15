@@ -46,15 +46,15 @@ const alimentos = {
                 { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
                 { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
                 { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
-                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7 }
             ],
             "Media mañana": [
                 { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
-                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 50 }
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1 }
             ],
             "Comida": [
                 { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50 },
-                { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50 },
+                { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8 },
                 { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
             ],
             "Merienda": [
@@ -63,8 +63,8 @@ const alimentos = {
             ],
             "Cena": [
                 { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
-                { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5, "gramos": 200 },
-                { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14, "gramos": 30 },
+                { "nombre": "Mozzarella", "kcal": 98, "proteina": 20.5, "carbs": 1.5, "grasa": 8.5, "gramos": 125 },
+                { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14 },
                 { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10 },
             ]
         },

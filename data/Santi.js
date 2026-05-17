@@ -31,7 +31,7 @@ const alimentos = {
         "suplementos": {
             "Creatina_Monohidrato": "5g",
             "Beta_Alanina": "3-6g",
-            "Citrulina_Malato": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
             "Tribulus_Terrestris": "750mg",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
@@ -71,7 +71,7 @@ const alimentos = {
         "suplementos": {
             "Creatina_Monohidrato": "5g",
             "Beta_Alanina": "3-6g",
-            "Citrulina_Malato": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
             "Tribulus_Terrestris": "750mg",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
@@ -111,7 +111,7 @@ const alimentos = {
         "suplementos": {
             "Creatina_Monohidrato": "5g",
             "Beta_Alanina": "3-6g",
-            "Citrulina_Malato": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
             "Tribulus_Terrestris": "750mg",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
@@ -150,7 +150,7 @@ const alimentos = {
         "suplementos": {
             "Creatina_Monohidrato": "5g",
             "Beta_Alanina": "3-6g",
-            "Citrulina_Malato": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
             "Tribulus_Terrestris": "750mg",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",
@@ -189,7 +189,7 @@ const alimentos = {
         "suplementos": {
             "Creatina_Monohidrato": "5g",
             "Beta_Alanina": "3-6g",
-            "Citrulina_Malato": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
             "Tribulus_Terrestris": "750mg",
             "Ashwagandha": "300-600mg",
             "Cafeina": "100-200mg pre",

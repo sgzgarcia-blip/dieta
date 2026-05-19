@@ -90,12 +90,20 @@
     @keyframes spin {
       100% { transform: rotate(360deg); }
     }
+
+    .enlace-limpio {
+      text-decoration: none;
+      background-color: transparent;
+      color: inherit; /* Hereda el color del texto normal */
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <h1>🍽 Dieta personalizada de #name# + <a href="https://docs.google.com/spreadsheets/d/1JBtxfGj504SUNB7Fc_jSTMvlFaWjPit_/edit?usp=drivesdk&ouid=104456945836942779370&rtpof=true&sd=true">📊</a> Progreso</h1>
+    <a href="https://docs.google.com/spreadsheets/d/1JBtxfGj504SUNB7Fc_jSTMvlFaWjPit_/edit?usp=sharing&ouid=104456945836942779370&rtpof=true&sd=true" class="enlace-limpio">
+      <h1>🍽 Dieta personalizada de #name# + 📊 Progreso</h1>
+    </a>
 
     <form id="form">
       <select class="g0" id="sexo" onchange="seleccionarOpcion(this.value)" title="Sexo">

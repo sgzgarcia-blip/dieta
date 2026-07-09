@@ -4,13 +4,12 @@ const alimentos = {
             "Desayuno": [
                 { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
                 { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
-                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6, "gramos": 40 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
                 { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
-                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7 }
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 40 }
             ],
             "Media mañana": [
-                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
-                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1 }
+                { "nombre": "Barrita de proteína", "kcal": 376, "proteina": 50, "carbs": 23, "grasa": 13, "gramos": 45 }
             ],
             "Comida": [
                 { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50 },
@@ -19,6 +18,8 @@ const alimentos = {
             ],
             "Merienda": [
                 { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 50 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
                 { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
             ],
             "Cena": [

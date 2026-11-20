@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rutina interactiva · Torso Smith y Espalda</title>
+<title>Rutina Empuje, Tirón y Piernas</title>
 <style>
   :root {
     --bg: #08131c;
@@ -218,8 +218,8 @@
   }
 
   .thumb {
-    width: 54px;
-    height: 54px;
+    width: 100%;
+    height: 100%;
     flex: none;
     border-radius: 11px;
     object-fit: cover;
@@ -491,8 +491,8 @@
 <div class="wrap">
 
   <header>
-    <div class="kicker">Rutina interactiva</div>
-    <h1>Torso en Smith <span>+ Espalda y bíceps</span></h1>
+    <div class="kicker">Rutina GYM</div>
+    <h1>Empuje,<span> Tirón y Piernas</span></h1>
     <p class="sub">Elige el peso de cada ejercicio con el selector (de 5 en 5 kg, máximo 120 kg). Se guarda solo en tu navegador: al cerrar y volver a abrir, los pesos siguen ahí.</p>
   </header>
 
@@ -504,7 +504,7 @@
       Cuádriceps <span class="count" id="count-cuadriceps">0/8</span>
     </button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-espalda" id="tab-espalda">
-      Espalda y bíceps <span class="count" id="count-espalda">0/8</span>
+      Espalda e bíceps <span class="count" id="count-espalda">0/8</span>
     </button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-gluteos" id="tab-gluteos">
       Glúteos e Isquios <span class="count" id="count-gluteos">0/8</span>
@@ -669,12 +669,12 @@
       card.innerHTML =
         '<div class="card-top">' +
           '<span class="pill">' + it.equip + "</span>" +
+          '<h2>' + it.name + '</h2>' +
           '<span class="saved"><i></i>guardado</span>' +
         "</div>" +
         '<div class="head">' +
           '<img class="thumb" alt="' + it.name + '"' +
             ' src="img/' + it.id + '.png" data-base="img/' + it.id + '" data-try="0" loading="lazy">' +
-          "<h2>" + it.name + "</h2>" +
         "</div>" +
         '<div class="meta">' +
           "<span><b>" + it.series + "</b></span>" +
@@ -813,7 +813,7 @@
   /* reset */
   document.getElementById("reset").addEventListener("click", function () {
     if (!Object.keys(store).length) { toast("No hay pesos guardados"); return; }
-    if (!confirm("¿Borrar los 16 pesos guardados?")) return;
+    if (!confirm("¿Borrar pesos guardados?")) return;
     store = {};
     try {
       localStorage.removeItem(STORE_KEY);

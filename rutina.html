@@ -1,0 +1,797 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rutina interactiva · Torso Smith y Espalda</title>
+<style>
+  :root {
+    --bg: #08131c;
+    --bg-2: #0b1a26;
+    --card: #0f2231;
+    --card-2: #122a3b;
+    --line: #1d3a4e;
+    --text: #e7f2f8;
+    --muted: #8ba6b8;
+    --cyan: #22d3ee;
+    --cyan-2: #0ea5b7;
+    --amber: #f0a04b;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background:
+      radial-gradient(1200px 600px at 15% -10%, #12374a 0%, transparent 60%),
+      radial-gradient(900px 500px at 95% 0%, #0d2f42 0%, transparent 55%),
+      var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    min-height: 100vh;
+    padding: 28px 20px 60px;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; }
+
+  /* ---------- HEADER ---------- */
+  header { margin-bottom: 22px; }
+
+  .kicker {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  h1 {
+    font-size: clamp(24px, 4vw, 38px);
+    line-height: 1.1;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+    font-weight: 800;
+  }
+
+  h1 span {
+    background: linear-gradient(90deg, var(--cyan), #7ef0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .sub {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ---------- TABS ---------- */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin: 22px 0 18px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--muted);
+    font: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 11px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: .16s;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+
+  .tab:hover { border-color: #2a5872; color: var(--text); }
+
+  .tab[aria-selected="true"] {
+    background: linear-gradient(180deg, #123a4d, #0e2836);
+    border-color: var(--cyan-2);
+    color: #fff;
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, .25), 0 8px 24px -12px rgba(34, 211, 238, .55);
+  }
+
+  .tab .count {
+    font-size: 11px;
+    background: rgba(34, 211, 238, .14);
+    color: var(--cyan);
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .stat {
+    background: rgba(15, 34, 49, .75);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 14px;
+    min-width: 132px;
+  }
+
+  .stat .k {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .stat .v {
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 2px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .stat .v small { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+  /* ---------- GRID ---------- */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 16px 14px;
+    position: relative;
+    transition: border-color .16s, transform .16s;
+  }
+
+  .card:hover { border-color: #27536b; }
+
+  .card.set { border-color: rgba(34, 211, 238, .45); }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .pill {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 700;
+    color: var(--cyan);
+    background: rgba(34, 211, 238, .10);
+    border: 1px solid rgba(34, 211, 238, .22);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  .saved {
+    margin-left: auto;
+    font-size: 10.5px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+  }
+
+  .saved i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2b4a5c;
+    transition: .2s;
+  }
+
+  .card.set .saved i { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+  .card.set .saved { color: var(--cyan); }
+
+  .head {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 11px;
+  }
+
+  .thumb {
+    width: 54px;
+    height: 54px;
+    flex: none;
+    border-radius: 11px;
+    object-fit: cover;
+    background: #0a1c28;
+    border: 1px solid #1e3b4e;
+    display: block;
+  }
+
+  .card.set .thumb { border-color: rgba(34, 211, 238, .35); }
+
+  .card h2 {
+    font-size: 17px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .meta span {
+    font-size: 11.5px;
+    color: #b9cfdb;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .06);
+    padding: 4px 8px;
+    border-radius: 7px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .meta span b { color: var(--text); font-weight: 700; }
+
+  /* ---------- SELECTOR DE PESO ---------- */
+  .weight {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .step {
+    width: 36px;
+    height: 40px;
+    flex: none;
+    border-radius: 10px;
+    border: 1px solid #24485e;
+    background: #0c1f2c;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: 1;
+    transition: .14s;
+    user-select: none;
+  }
+
+  .step:hover { background: #143143; border-color: #2f637d; }
+  .step:active { transform: scale(.95); }
+  .step:disabled { opacity: .35; cursor: not-allowed; }
+
+  .select-wrap {
+    position: relative;
+    flex: 1;
+  }
+
+  select {
+    appearance: none;
+    width: 100%;
+    height: 40px;
+    background: #0c1f2c;
+    border: 1px solid #24485e;
+    border-radius: 10px;
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0 34px 0 12px;
+    cursor: pointer;
+    font-variant-numeric: tabular-nums;
+  }
+
+  select:focus-visible,
+  .step:focus-visible,
+  .tab:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+  }
+
+  select option { background: #0c1f2c; color: var(--text); }
+
+  .select-wrap::after {
+    content: "";
+    position: absolute;
+    right: 13px;
+    top: 50%;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: translateY(-70%) rotate(45deg);
+    pointer-events: none;
+  }
+
+  .bar {
+    position: relative;
+    height: 8px;
+    border-radius: 4px;
+    background: #0a1c28;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+
+  .bar i {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--cyan-2), var(--cyan));
+    transition: width .22s ease;
+  }
+
+  .bar::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(to right,
+      transparent 0,
+      transparent calc(100% / 12 - 1px),
+      rgba(6, 16, 24, .9) calc(100% / 12 - 1px),
+      rgba(6, 16, 24, .9) calc(100% / 12));
+  }
+
+  .scale {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #5d7d90;
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    margin-top: 26px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    color: var(--muted);
+    font-size: 12.5px;
+  }
+
+  .ghost {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 9px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+  }
+
+  .ghost:hover { color: #ff9b9b; border-color: #5b2b2b; }
+
+  .hint { color: #5d7d90; }
+
+  .hint kbd {
+    background: #0c1f2c;
+    border: 1px solid #24485e;
+    border-radius: 5px;
+    padding: 1px 5px;
+    font-size: 11px;
+    font-family: inherit;
+  }
+
+  /* ---------- TOAST ---------- */
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    transform: translate(-50%, 20px);
+    background: #0d2b3a;
+    border: 1px solid var(--cyan-2);
+    color: #d9f7ff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: .22s;
+    box-shadow: 0 12px 30px -12px rgba(0, 0, 0, .8);
+    z-index: 50;
+  }
+
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  .cards > * { min-width: 0; }
+  .select-wrap { min-width: 0; }
+
+  /* tablets y portátiles pequeños */
+  @media (max-width: 900px) {
+    .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  /* móvil horizontal y móvil grande */
+  @media (max-width: 720px) {
+    body { padding: 22px 16px 48px; }
+    .cards { grid-template-columns: 1fr; }
+
+    .tabs { gap: 6px; }
+    .tab { flex: 1 1 140px; justify-content: center; font-size: 13.5px; padding: 12px 14px; }
+
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .stat { min-width: 0; padding: 9px 12px; }
+    .stat .v { font-size: 18px; }
+
+    select { height: 46px; font-size: 16px; }
+    .step { width: 42px; height: 46px; }
+  }
+
+  /* móvil vertical */
+  @media (max-width: 430px) {
+    body { padding: 18px 13px 44px; }
+    h1 { font-size: 25px; }
+    .sub { font-size: 13px; }
+    .tab { flex: 1 1 100%; }
+    .card { padding: 14px 13px 12px; border-radius: 14px; }
+    .card h2 { font-size: 16px; }
+    .meta span { font-size: 11px; padding: 3px 7px; }
+    .kicker { font-size: 10px; letter-spacing: 2px; }
+    footer { font-size: 12px; }
+    .hint { width: 100%; }
+  }
+
+  /* pantallas muy estrechas */
+  @media (max-width: 340px) {
+    .weight { gap: 5px; }
+    .step { width: 36px; }
+    select { padding-left: 9px; font-size: 15px; }
+  }
+
+  /* ---------- PRINT ---------- */
+  @media print {
+    body { background: #fff; color: #111; padding: 0; }
+    .tab, .stats, footer, .step, .toast { display: none !important; }
+    .panel { display: block !important; }
+    .cards { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .card { background: #fff; border: 1px solid #ccc; color: #111; break-inside: avoid; }
+    .card h2, .meta span, .saved { color: #111; }
+    .meta span { border-color: #ddd; }
+    select { border: 1px solid #999; color: #111; background: #fff; }
+    .bar { background: #ddd; }
+    .bar i { background: #333; }
+    .pill { color: #111; border-color: #bbb; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Rutina interactiva</div>
+    <h1>Torso en Smith <span>+ Espalda y bíceps</span></h1>
+    <p class="sub">Elige el peso de cada ejercicio con el selector (de 5 en 5 kg, máximo 120 kg). Se guarda solo en tu navegador: al cerrar y volver a abrir, los pesos siguen ahí.</p>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-panel="p-torso" id="tab-torso">
+      Torso en Smith <span class="count" id="count-torso">0/8</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-espalda" id="tab-espalda">
+      Espalda y bíceps <span class="count" id="count-espalda">0/8</span>
+    </button>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">Registrados</div><div class="v" id="st-count">0 <small>/ 16</small></div></div>
+    <div class="stat"><div class="k">Carga total</div><div class="v" id="st-total">0 <small>kg</small></div></div>
+    <div class="stat"><div class="k">Media</div><div class="v" id="st-avg">— <small>kg</small></div></div>
+    <div class="stat"><div class="k">Guardado</div><div class="v" id="st-time" style="font-size:13px;line-height:1.5;color:#8ba6b8">sin datos</div></div>
+  </div>
+
+  <section class="panel active" id="p-torso" role="tabpanel" aria-labelledby="tab-torso">
+    <div class="cards" id="cards-torso"></div>
+  </section>
+
+  <section class="panel" id="p-espalda" role="tabpanel" aria-labelledby="tab-espalda">
+    <div class="cards" id="cards-espalda"></div>
+  </section>
+
+  <footer>
+    <button class="ghost" id="reset">Borrar todos los pesos</button>
+    <span class="hint">Atajos: <kbd>↑</kbd> <kbd>↓</kbd> cambian el peso del selector activo. Los datos viven en <b>localStorage</b> de este navegador.</span>
+  </footer>
+</div>
+
+<div class="toast" id="toast">Peso guardado</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var STORE_KEY = "rutinaPesos.v1";
+  var TIME_KEY = "rutinaPesos.v1.updated";
+  var MIN = 5, MAX = 120, STEP = 5;
+
+  var DATA = [
+    {
+      id: "torso",
+      title: "Torso en Smith",
+      items: [
+        { id: "t-press-inclinado",  name: "Press inclinado Smith",       equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-plano",      name: "Press plano Smith",           equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-militar",    name: "Press militar Smith",         equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-elev-laterales",   name: "Elevaciones laterales",       equip: "Mancuerna", series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 60 s" },
+        { id: "t-apertura-maq",     name: "Apertura en máquina",         equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-apertura-trasera", name: "Apertura trasera máquina",    equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-ext-triceps",      name: "Extensiones tríceps polea",   equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-curl-polea",       name: "Curl de bíceps polea",        equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" }
+      ]
+    },
+    {
+      id: "espalda",
+      title: "Espalda y bíceps",
+      items: [
+        { id: "e-dominadas",       name: "Dominadas",                     equip: "Peso corporal", series: "4 series", reps: "6–10 reps",  rir: "RIR 2", rest: "Descanso 2–3 min", note: "lastre" },
+        { id: "e-jalon",           name: "Jalón al pecho",                equip: "Polea",         series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2 min" },
+        { id: "e-remo-sentado",    name: "Remo sentado en polea",         equip: "Polea",         series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2 min" },
+        { id: "e-pullover",        name: "Pullover polea alta",           equip: "Polea",         series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 60 s" },
+        { id: "e-polea-unilateral",name: "Polea alta unilateral",         equip: "Polea",         series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "e-remo-t",          name: "Remo T en máquina",             equip: "Máquina",       series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "e-curl-mancuernas", name: "Curl de bíceps con mancuernas", equip: "Mancuerna",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "e-triceps-copa",    name: "Tríceps copa a una mancuerna",  equip: "Mancuerna",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" }
+      ]
+    }
+  ];
+
+  /* ---------- almacenamiento ---------- */
+  function readStore() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      var obj = raw ? JSON.parse(raw) : {};
+      return (obj && typeof obj === "object") ? obj : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function writeStore(store) {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(store));
+      localStorage.setItem(TIME_KEY, new Date().toISOString());
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  var store = readStore();
+
+  /* ---------- helpers ---------- */
+  function clamp(v) { return Math.max(MIN, Math.min(MAX, v)); }
+
+  function fmtDate(iso) {
+    if (!iso) return "sin datos";
+    var d = new Date(iso);
+    if (isNaN(d)) return "sin datos";
+    var pad = function (n) { return (n < 10 ? "0" : "") + n; };
+    return pad(d.getDate()) + "/" + pad(d.getMonth() + 1) + " · " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+  }
+
+  var toastEl = document.getElementById("toast");
+  var toastTimer = null;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 1400);
+  }
+
+  /* ---------- construcción de tarjetas ---------- */
+  var allItems = [];
+
+  DATA.forEach(function (group) {
+    var host = document.getElementById("cards-" + group.id);
+
+    group.items.forEach(function (it) {
+      allItems.push(it);
+
+      var card = document.createElement("article");
+      card.className = "card";
+      card.dataset.id = it.id;
+
+      var opts = '<option value="">—</option>';
+      for (var w = MAX; w >= MIN; w -= STEP) {
+        opts += '<option value="' + w + '">' + w + " kg</option>";
+      }
+
+      card.innerHTML =
+        '<div class="card-top">' +
+          '<span class="pill">' + it.equip + "</span>" +
+          '<span class="saved"><i></i>guardado</span>' +
+        "</div>" +
+        '<div class="head">' +
+          '<img class="thumb" alt="' + it.name + '"' +
+            ' src="img/' + it.id + '.png" data-base="img/' + it.id + '" data-try="0" loading="lazy">' +
+          "<h2>" + it.name + "</h2>" +
+        "</div>" +
+        '<div class="meta">' +
+          "<span><b>" + it.series + "</b></span>" +
+          "<span>" + it.reps + "</span>" +
+          "<span>" + it.rir + "</span>" +
+          "<span>" + it.rest + "</span>" +
+        "</div>" +
+        '<div class="weight">' +
+          '<button class="step" type="button" data-act="minus" aria-label="Bajar 5 kg">−</button>' +
+          '<div class="select-wrap">' +
+            '<select aria-label="Peso de ' + it.name + '" data-id="' + it.id + '">' + opts + "</select>" +
+          "</div>" +
+          '<button class="step" type="button" data-act="plus" aria-label="Subir 5 kg">+</button>' +
+        "</div>" +
+        '<div class="bar"><i></i></div>' +
+        '<div class="scale"><span>5 kg</span><span>' + (it.note ? it.note : "máx. 120 kg") + "</span><span>120 kg</span></div>";
+
+      host.appendChild(card);
+    });
+  });
+
+  /* ---------- pintar estado ---------- */
+  function paintCard(card, value) {
+    var sel = card.querySelector("select");
+    var fill = card.querySelector(".bar i");
+    var minus = card.querySelector('[data-act="minus"]');
+    var plus = card.querySelector('[data-act="plus"]');
+    var savedEl = card.querySelector(".saved");
+    savedEl.innerHTML = "<i></i>" + (value ? "guardado" : "sin peso");
+
+    if (value) {
+      sel.value = String(value);
+      card.classList.add("set");
+      fill.style.width = (value / MAX * 100) + "%";
+    } else {
+      sel.value = "";
+      card.classList.remove("set");
+      fill.style.width = "0%";
+    }
+
+    var current = value || 0;
+    minus.disabled = current <= MIN;
+    plus.disabled = current >= MAX;
+  }
+
+  function paintAll() {
+    allItems.forEach(function (it) {
+      var card = document.querySelector('.card[data-id="' + it.id + '"]');
+      paintCard(card, store[it.id]);
+    });
+
+    var values = Object.keys(store)
+      .map(function (k) { return Number(store[k]); })
+      .filter(function (v) { return v >= MIN && v <= MAX; });
+
+    var total = values.reduce(function (a, b) { return a + b; }, 0);
+
+    document.getElementById("st-count").innerHTML = values.length + " <small>/ 16</small>";
+    document.getElementById("st-total").innerHTML = total + " <small>kg</small>";
+    document.getElementById("st-avg").innerHTML =
+      values.length ? (total / values.length).toFixed(1).replace(".", ",") + " <small>kg</small>" : "— <small>kg</small>";
+    document.getElementById("st-time").textContent = fmtDate(localStorage.getItem(TIME_KEY));
+
+    DATA.forEach(function (group) {
+      var done = group.items.filter(function (it) { return store[it.id]; }).length;
+      document.getElementById("count-" + group.id).textContent = done + "/" + group.items.length;
+    });
+  }
+
+  /* ---------- eventos ---------- */
+  function setWeight(id, value) {
+    if (value) {
+      store[id] = value;
+    } else {
+      delete store[id];
+    }
+    var ok = writeStore(store);
+    paintAll();
+    if (value) toast(ok ? "Guardado: " + value + " kg" : "No se pudo guardar");
+  }
+
+  document.addEventListener("change", function (e) {
+    var sel = e.target.closest("select[data-id]");
+    if (!sel) return;
+    setWeight(sel.dataset.id, sel.value ? Number(sel.value) : null);
+  });
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".step");
+    if (!btn) return;
+    var card = btn.closest(".card");
+    var id = card.dataset.id;
+    var current = Number(store[id]) || 0;
+    var next = clamp(current + (btn.dataset.act === "plus" ? STEP : -STEP));
+    setWeight(id, next);
+  });
+
+  /* atajos ↑ ↓ sobre el selector enfocado */
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowUp" && e.key !== "ArrowDown") return;
+    var sel = document.activeElement;
+    if (!sel || sel.tagName !== "SELECT") return;
+    e.preventDefault();
+    var id = sel.dataset.id;
+    var current = Number(store[id]) || 0;
+    setWeight(id, clamp(current + (e.key === "ArrowUp" ? STEP : -STEP)));
+    document.querySelector('select[data-id="' + id + '"]').focus();
+  });
+
+  /* ---------- miniaturas: .png -> .jpg -> .webp -> sin imagen ---------- */
+  document.addEventListener("error", function (e) {
+    var img = e.target;
+    if (!img || img.tagName !== "IMG" || !img.classList.contains("thumb")) return;
+    var exts = ["jpg", "jpeg", "webp"];
+    var i = Number(img.dataset.try || 0);
+    if (i < exts.length) {
+      img.dataset.try = String(i + 1);
+      img.src = img.dataset.base + "." + exts[i];
+    } else {
+      var head = img.closest(".head");
+      img.remove();
+      if (head) head.classList.add("noimg");
+    }
+  }, true);
+
+  /* pestañas */
+  document.querySelectorAll(".tab").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      document.querySelectorAll(".tab").forEach(function (t) { t.setAttribute("aria-selected", "false"); });
+      tab.setAttribute("aria-selected", "true");
+      document.querySelectorAll(".panel").forEach(function (p) { p.classList.remove("active"); });
+      document.getElementById(tab.dataset.panel).classList.add("active");
+    });
+  });
+
+  /* reset */
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!Object.keys(store).length) { toast("No hay pesos guardados"); return; }
+    if (!confirm("¿Borrar los 16 pesos guardados?")) return;
+    store = {};
+    try {
+      localStorage.removeItem(STORE_KEY);
+      localStorage.removeItem(TIME_KEY);
+    } catch (err) { /* ignorar */ }
+    paintAll();
+    toast("Pesos borrados");
+  });
+
+  /* sincroniza entre pestañas del mismo navegador */
+  window.addEventListener("storage", function (e) {
+    if (e.key === STORE_KEY) { store = readStore(); paintAll(); }
+  });
+
+  paintAll();
+})();
+</script>
+</body>
+</html>

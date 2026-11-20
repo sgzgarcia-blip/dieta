@@ -500,8 +500,14 @@
     <button class="tab" role="tab" aria-selected="true" data-panel="p-torso" id="tab-torso">
       Torso en Smith <span class="count" id="count-torso">0/8</span>
     </button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-cuadriceps" id="tab-cuadriceps">
+      Cuádriceps <span class="count" id="count-cuadriceps">0/8</span>
+    </button>
     <button class="tab" role="tab" aria-selected="false" data-panel="p-espalda" id="tab-espalda">
       Espalda y bíceps <span class="count" id="count-espalda">0/8</span>
+    </button>
+    <button class="tab" role="tab" aria-selected="false" data-panel="p-gluteos" id="tab-gluteos">
+      Glúteos e Isquios <span class="count" id="count-gluteos">0/8</span>
     </button>
   </div>
 
@@ -515,11 +521,15 @@
   <section class="panel active" id="p-torso" role="tabpanel" aria-labelledby="tab-torso">
     <div class="cards" id="cards-torso"></div>
   </section>
-
+  <section class="panel" id="p-cuadriceps" role="tabpanel" aria-labelledby="tab-cuadriceps">
+    <div class="cards" id="cards-cuadriceps"></div>
+  </section>
   <section class="panel" id="p-espalda" role="tabpanel" aria-labelledby="tab-espalda">
     <div class="cards" id="cards-espalda"></div>
   </section>
-
+  <section class="panel" id="p-gluteos" role="tabpanel" aria-labelledby="tab-gluteos">
+    <div class="cards" id="cards-gluteos"></div>
+  </section>
   <footer>
     <button class="ghost" id="reset">Borrar todos los pesos</button>
     <span class="hint">Atajos: <kbd>↑</kbd> <kbd>↓</kbd> cambian el peso del selector activo. Los datos viven en <b>localStorage</b> de este navegador.</span>
@@ -552,6 +562,20 @@
       ]
     },
     {
+      id: "cuadriceps",
+      title: "Cuádriceps",
+      items: [
+        { id: "t-press-inclinado",  name: "Press inclinado Smith",       equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-plano",      name: "Press plano Smith",           equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-militar",    name: "Press militar Smith",         equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-elev-laterales",   name: "Elevaciones laterales",       equip: "Mancuerna", series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 60 s" },
+        { id: "t-apertura-maq",     name: "Apertura en máquina",         equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-apertura-trasera", name: "Apertura trasera máquina",    equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-ext-triceps",      name: "Extensiones tríceps polea",   equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-curl-polea",       name: "Curl de bíceps polea",        equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" }
+      ]
+    },
+    {
       id: "espalda",
       title: "Espalda y bíceps",
       items: [
@@ -564,7 +588,21 @@
         { id: "e-curl-mancuernas", name: "Curl de bíceps con mancuernas", equip: "Mancuerna",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
         { id: "e-triceps-copa",    name: "Tríceps copa a una mancuerna",  equip: "Mancuerna",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" }
       ]
-    }
+    },
+        {
+      id: "gluteos",
+      title: "Glúteos e Isquios",
+      items: [
+        { id: "t-sentadilla",       name: "Sentadilla Smith",            equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-plano",      name: "Press plano Smith",           equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-press-militar",    name: "Press militar Smith",         equip: "Smith",     series: "4 series", reps: "8–12 reps",  rir: "RIR 2", rest: "Descanso 2–3 min" },
+        { id: "t-elev-laterales",   name: "Elevaciones laterales",       equip: "Mancuerna", series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 60 s" },
+        { id: "t-apertura-maq",     name: "Apertura en máquina",         equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-apertura-trasera", name: "Apertura trasera máquina",    equip: "Máquina",   series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-ext-triceps",      name: "Extensiones tríceps polea",   equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" },
+        { id: "t-curl-polea",       name: "Curl de bíceps polea",        equip: "Polea",     series: "4 series", reps: "12–15 reps", rir: "RIR 1", rest: "Descanso 90 s" }
+      ]
+    },
   ];
 
   /* ---------- almacenamiento ---------- */

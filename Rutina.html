@@ -494,7 +494,7 @@
     <div class="kicker">Rutina GYM</div>
     <h1>Empuje,<span> Tirón y Piernas</span></h1>
   </header>
-  <center><h1 id="hora" style="font-size: 80px; margin: 10px 0;"></h1></center>
+  <center><h1 id="hora" style="font-size: 78px; margin: 10px 0;"></h1></center>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-panel="p-torso" id="tab-torso">
       Torso en Smith <span class="count" id="count-torso">0/8</span>
@@ -511,7 +511,7 @@
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="k">Registrados</div><div class="v" id="st-count">0 <small>/ 27</small></div></div>
+    <div class="stat"><div class="k">Registrados</div><div class="v" id="st-count">0 <small>/ 0</small></div></div>
     <div class="stat"><div class="k">Carga total</div><div class="v" id="st-total">0 <small>kg</small></div></div>
     <div class="stat"><div class="k">Media</div><div class="v" id="st-avg">— <small>kg</small></div></div>
     <div class="stat"><div class="k">Guardado</div><div class="v" id="st-time" style="font-size:13px;line-height:1.5;color:#8ba6b8">sin datos</div></div>
@@ -726,7 +726,7 @@
 
     var total = values.reduce(function (a, b) { return a + b; }, 0);
 
-    document.getElementById("st-count").innerHTML = values.length + " <small>/ 16</small>";
+    document.getElementById("st-count").innerHTML = values.length + " <small>/ " + contarArrays(DATA) + "</small>";
     document.getElementById("st-total").innerHTML = total + " <small>kg</small>";
     document.getElementById("st-avg").innerHTML =
       values.length ? (total / values.length).toFixed(1).replace(".", ",") + " <small>kg</small>" : "— <small>kg</small>";
@@ -833,6 +833,20 @@
 
     document.getElementById("hora").textContent = hora;
   }
+
+function contarArrays(obj) {
+    let total = 0;
+
+    for (const valor of Object.values(obj)) {
+        if (Array.isArray(valor)) {
+            total += valor.length;
+        } else if (valor !== null && typeof valor === "object") {
+            total += contarArrays(valor);
+        }
+    }
+
+    return total;
+}
 
   mostrarHora();
   setInterval(mostrarHora, 1000);

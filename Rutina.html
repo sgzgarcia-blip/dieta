@@ -493,7 +493,7 @@
   <header>
     <div class="kicker">Rutina GYM</div>
     <h1>Empuje,<span> Tirón y Piernas</span></h1>
-    <p class="sub">Elige el peso de cada ejercicio con el selector (de 5 en 5 kg, máximo 120 kg). Se guarda solo en tu navegador: al cerrar y volver a abrir, los pesos siguen ahí.</p>
+    <h1 id="hora"></h1>
   </header>
 
   <div class="tabs" role="tablist">
@@ -822,6 +822,21 @@
   window.addEventListener("storage", function (e) {
     if (e.key === STORE_KEY) { store = readStore(); paintAll(); }
   });
+
+  function mostrarHora() {
+    const ahora = new Date();
+
+    const hora = ahora.toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    });
+
+    document.getElementById("hora").textContent = hora;
+  }
+
+  mostrarHora();
+  setInterval(mostrarHora, 1000);
 
   paintAll();
 })();

@@ -821,7 +821,8 @@
   document.querySelectorAll("#descanso").forEach(function (tab) {
     tab.addEventListener("click", function () {
       document.getElementById("hora").style.color = "red";
-      siguiente = new Date().setSeconds(new Date().getSeconds() + 60);
+      const palabras = tab.innerHTML.split(" ");
+      siguiente = new Date().setSeconds(new Date().getSeconds() + (palabras[2] === 'min' ? parseInt(palabras[1]) * 60 : parseInt(palabras[1])));
       toast(tab.innerHTML);
     });
   });

@@ -544,6 +544,7 @@
   var STORE_KEY = "rutinaPesos.v1";
   var TIME_KEY = "rutinaPesos.v1.updated";
   var MIN = 5, MAX = 120, STEP = 5;
+  var siguiente = new Date();
 
   var DATA = [
     {
@@ -819,6 +820,8 @@
 
   document.querySelectorAll("#descanso").forEach(function (tab) {
     tab.addEventListener("click", function () {
+      document.getElementById("hora").style.color = "red";
+      siguiente = new Date().setSeconds(new Date().getSeconds() + 60);
       toast(tab.innerHTML);
     });
   });
@@ -836,7 +839,9 @@
         minute: '2-digit',
         second: '2-digit'
     });
-
+    if(new Date(siguiente).getTime() < ahora.getTime()) {
+      document.getElementById("hora").style.color = "#e7f2f8";
+    }
     document.getElementById("hora").textContent = hora;
   }
 

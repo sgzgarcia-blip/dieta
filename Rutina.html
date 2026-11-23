@@ -824,6 +824,7 @@
       const palabras = tab.innerHTML.split(" ");
       siguiente = new Date().setSeconds(new Date().getSeconds() + (palabras[2] === 'min' ? parseInt(palabras[1]) * 60 : parseInt(palabras[1])));
       toast(tab.innerHTML);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 

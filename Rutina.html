@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rutina Empuje, Tirón y Piernas</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
   :root {
     --bg: #08131c;
@@ -540,11 +541,20 @@
 <script>
 (function () {
   "use strict";
+      // 📚 HISTORIAL
+  const loadHistory = () => JSON.parse(localStorage.getItem("historyPeso")) || [];
+
+  const saveHistory = (data) => {
+    const history = loadHistory();
+    history.push(data);
+    localStorage.setItem("historyPeso", JSON.stringify(history.slice(-10)));
+  };
 
   var STORE_KEY = "rutinaPesos.v1";
   var TIME_KEY = "rutinaPesos.v1.updated";
   var MIN = 5, MAX = 300, STEP = 5;
   var siguiente = new Date();
+  let chart={};
 
   var DATA = [
     {
@@ -685,9 +695,10 @@
           '<button class="step" type="button" data-act="plus" aria-label="Subir 5 kg">+</button>' +
         "</div>" +
         '<div class="bar"><i></i></div>' +
-        '<div class="scale"><span>' + MIN + " kg</span><span>" + (it.note ? it.note : "máx. " + MAX + " kg") + "</span><span>" + MAX + " kg</span></div>";
-
+        '<div class="scale"><span>' + MIN + " kg</span><span>" + (it.note ? it.note : "máx. " + MAX + " kg") + "</span><span>" + MAX + " kg</span></div>" +
+        '<canvas id="' + it.id + '"></canvas>'
       host.appendChild(card);
+      drawChart(it.name , it.id);
     });
   });
 
@@ -716,9 +727,12 @@
   }
 
   function paintAll() {
+    saveHistory({ date: new Date().toLocaleDateString(), store });
+    
     allItems.forEach(function (it) {
       var card = document.querySelector('.card[data-id="' + it.id + '"]');
       paintCard(card, store[it.id]);
+      drawChart(it.name , it.id);
     });
 
     var values = Object.keys(store)
@@ -863,6 +877,25 @@
 
   mostrarHora();
   setInterval(mostrarHora, 1000);
+
+  function drawChart(name, id) {
+      const history = loadHistory();
+      const labels = history.map(h => h.date);
+      const ctx = document.getElementById(id);
+
+      if (chart[id]) chart[id].destroy();
+
+      chart[id] = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels,
+          datasets: [
+            { label: name, data: history.map(h => Number(h.store[id])), borderWidth: 2 }
+          ]
+        },
+        options: { responsive: true }
+      });
+  }
 
   paintAll();
 })();

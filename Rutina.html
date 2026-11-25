@@ -424,6 +424,12 @@
     z-index: 50;
   }
 
+  .enlace-limpio {
+      text-decoration: none;
+      background-color: transparent;
+      color: inherit; /* Hereda el color del texto normal */
+    }
+
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
   /* ---------- RESPONSIVE ---------- */
@@ -493,7 +499,7 @@
 
   <header>
     <div class="kicker">Rutina GYM</div>
-    <h1>Empuje,<span> Tirón y Piernas</span> <a href="Dieta.html?name=Default">Dieta</a></h1>
+    <a href="Dieta.html?name=Default" class="enlace-limpio"><h1>Empuje,<span> Tirón y Piernas</span> + Dieta</h1></a>
   </header>
   <center><h1 id="hora" style="font-size: 78px; margin: 10px 0;"></h1></center>
   <div class="tabs" role="tablist">

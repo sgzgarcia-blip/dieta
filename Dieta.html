@@ -7,9 +7,25 @@
   <title>Dieta y Macros Dinámicos</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
+      :root {
+        --bg: #08131c;
+        --bg-2: #0b1a26;
+        --card: #0f2231;
+        --card-2: #122a3b;
+        --line: #1d3a4e;
+        --text: #e7f2f8;
+        --muted: #8ba6b8;
+        --cyan: #22d3ee;
+        --cyan-2: #0ea5b7;
+        --amber: #f0a04b;
+      }
     body {
       font-family: Arial;
-      background: #f4f6f9;
+      background:
+      radial-gradient(1200px 600px at 15% -10%, #12374a 0%, transparent 60%),
+      radial-gradient(900px 500px at 95% 0%, #0d2f42 0%, transparent 55%),
+      var(--bg);
+      color: var(--text);
       margin: 0;
       padding: 15px
     }
@@ -17,7 +33,8 @@
     .container {
       max-width: 900px;
       margin: auto;
-      background: #fff;
+      background: var(--card);
+      color: var(--text);
       padding: 20px;
       border-radius: 10px
     }
@@ -31,7 +48,10 @@
     input,
     select,
     button {
-      border-radius: 5px;  
+      border-radius: 5px;
+      background: #0c1f2c;
+      border: 1px solid #24485e;
+      color: var(--text);  
       padding: 10px;
       font-size: 16px
     }
@@ -104,7 +124,6 @@
     <a href="Rutina.html" class="enlace-limpio">
       <h1>🍽 Dieta personalizada de #name# + 📊 Progreso</h1>
     </a>
-
     <form id="form">
       <select class="g0" id="sexo" onchange="seleccionarOpcion(this.value)" title="Sexo">
         <option value="hombre">Hombre</option>

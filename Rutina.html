@@ -542,16 +542,17 @@
 (function () {
   "use strict";
       // 📚 HISTORIAL
-  const loadHistory = () => JSON.parse(localStorage.getItem("historyPeso")) || [];
+  const loadHistory = () => JSON.parse(localStorage.getItem(HISTORY_WEIGHT)) || [];
 
   const saveHistory = (data) => {
     const history = loadHistory();
     history.push(data);
-    localStorage.setItem("historyPeso", JSON.stringify(history.slice(-10)));
+    localStorage.setItem(HISTORY_WEIGHT, JSON.stringify(history.slice(-10)));
   };
 
   var STORE_KEY = "rutinaPesos.v1";
   var TIME_KEY = "rutinaPesos.v1.updated";
+  var HISTORY_WEIGHT = "rutinaPesos.v1.history";
   var MIN = 5, MAX = 300, STEP = 5;
   var siguiente = new Date();
   let chart={};
@@ -827,6 +828,7 @@
     try {
       localStorage.removeItem(STORE_KEY);
       localStorage.removeItem(TIME_KEY);
+      localStorage.removeItem(HISTORY_WEIGHT);
     } catch (err) { /* ignorar */ }
     paintAll();
     toast("Pesos borrados");

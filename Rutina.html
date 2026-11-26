@@ -547,14 +547,6 @@
 <script>
 (function () {
   "use strict";
-      // 📚 HISTORIAL
-  const loadHistory = () => JSON.parse(localStorage.getItem(HISTORY_WEIGHT)) || [];
-
-  const saveHistory = (data) => {
-    const history = loadHistory();
-    history.push(data);
-    localStorage.setItem(HISTORY_WEIGHT, JSON.stringify(history.slice(-10)));
-  };
 
   var STORE_KEY = "rutinaPesos.v1";
   var TIME_KEY = "rutinaPesos.v1.updated";
@@ -639,6 +631,18 @@
   }
 
   var store = readStore();
+
+  // 📚 HISTORIAL
+  const loadHistory = () => JSON.parse(localStorage.getItem(HISTORY_WEIGHT)) || {};
+
+  const saveHistory = (id, data) => {
+    const history = loadHistory();
+    if (!history[id]) {
+      history[id] = [];
+    }
+    history[id].push(data);
+    localStorage.setItem(HISTORY_WEIGHT, JSON.stringify(history));
+  };
 
   /* ---------- helpers ---------- */
   function clamp(v) { return Math.max(MIN, Math.min(MAX, v)); }
@@ -763,7 +767,7 @@
   function setWeight(id, value) {
     if (value) {
       store[id] = value;
-      saveHistory({ date: new Date().toLocaleDateString(), [id]: value });
+      saveHistory(id, { date: new Date().toLocaleDateString(), value: value });
     } else {
       delete store[id];
     }
@@ -888,7 +892,7 @@
 
   function drawChart(name, id) {
       const history = loadHistory();
-      const labels = history.map(h => h.date);
+      const labels = Array.isArray(history[id]) && history[id]?.map(h => h.date) || [];
       const ctx = document.getElementById(id);
 
       if (chart[id]) chart[id].destroy();
@@ -898,7 +902,7 @@
         data: {
           labels,
           datasets: [
-            { label: name, data: history.filter((h) => h[id] != null).map(h => Number(h[id])), borderWidth: 2 }
+            { label: name, data: Array.isArray(history[id]) && history[id]?.map(h => Number(h.value)) || [], borderWidth: 2 }
           ]
         },
         options: { responsive: true }

@@ -763,13 +763,13 @@
   function setWeight(id, value) {
     if (value) {
       store[id] = value;
+      saveHistory({ date: new Date().toLocaleDateString(), [id]: value });
     } else {
       delete store[id];
     }
     var ok = writeStore(store);
     paintAll();
     if (value) toast(ok ? "Guardado: " + value + " kg" : "No se pudo guardar");
-    saveHistory({ date: new Date().toLocaleDateString(), store });
   }
 
   document.addEventListener("change", function (e) {
@@ -898,7 +898,7 @@
         data: {
           labels,
           datasets: [
-            { label: name, data: history.map(h => Number(h.store[id])), borderWidth: 2 }
+            { label: name, data: history.filter((h) => h[id] != null).map(h => Number(h[id])), borderWidth: 2 }
           ]
         },
         options: { responsive: true }

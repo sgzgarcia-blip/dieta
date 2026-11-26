@@ -550,7 +550,7 @@
 
   var STORE_KEY = "rutinaPesos.v1";
   var TIME_KEY = "rutinaPesos.v1.updated";
-  var HISTORY_WEIGHT = "rutinaPesos.v1.history";
+  var HISTORY_WEIGHT = "rutinaPesos.v2.history";
   var MIN = 5, MAX = 300, STEP = 5;
   var siguiente = new Date();
   let chart={};
@@ -707,7 +707,8 @@
         "</div>" +
         '<div class="bar"><i></i></div>' +
         '<div class="scale"><span>' + MIN + " kg</span><span>" + (it.note ? it.note : "máx. " + MAX + " kg") + "</span><span>" + MAX + " kg</span></div>" +
-        '<canvas id="' + it.id + '"></canvas>'
+        '<canvas id="' + it.id + '"></canvas>' +
+        '<button class="ghost" id="resetHistory" data-id="' + it.id + '">Borrar historico de pesos</button>';
       host.appendChild(card);
       drawChart(it.name , it.id);
     });
@@ -838,10 +839,25 @@
     try {
       localStorage.removeItem(STORE_KEY);
       localStorage.removeItem(TIME_KEY);
-      localStorage.removeItem(HISTORY_WEIGHT);
     } catch (err) { /* ignorar */ }
     paintAll();
     toast("Pesos borrados");
+  });
+
+
+    /* reset history*/
+  document.querySelectorAll("#resetHistory").forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      try {
+        const history = loadHistory();
+        if (!history[tab.getAttribute("data-id")]) { toast("No hay pesos guardados"); return; }
+        if (!confirm("¿Borrar historial de pesos?")) return;
+        delete history[tab.getAttribute("data-id")];
+        localStorage.setItem(HISTORY_WEIGHT, JSON.stringify(history));
+      } catch (err) { /* ignorar */ }
+      paintAll();
+      toast("Historial de pesos borrado");
+    });
   });
 
   document.querySelectorAll("#descanso").forEach(function (tab) {

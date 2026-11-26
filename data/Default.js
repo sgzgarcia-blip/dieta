@@ -1,219 +1,516 @@
-const alimentos = {
-    "Lunes": {
+const alimentos = {      
+    "Dieta Santi A": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 40 }
+            ],
+            "Media mañana": [
+                { "nombre": "Barrita de proteína", "kcal": 376, "proteina": 50, "carbs": 23, "grasa": 13, "gramos": 45 }
+            ],
+            "Comida": [
+                { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50 },
+                { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8 },
+                { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 45 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+            ],
+            "Cena": [
+                { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
+                { "nombre": "Queso cottage", "kcal": 98, "proteina": 11.5, "carbs": 2.8, "grasa": 4.5, "gramos": 200 },
+                { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14 },
+                { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10 },
+            ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
+            "Tribulus_Terrestris": "750mg",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Santi B": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
+                { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7 }
+            ],
+            "Media mañana": [
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 }
+            ],
+            "Comida": [
+                { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50 },
+                { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8 },
+                { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 45 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+            ],
+            "Cena": [
+                { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
+                { "nombre": "Mozzarella", "kcal": 98, "proteina": 20.5, "carbs": 1.5, "grasa": 8.5, "gramos": 125 },
+                { "nombre": "Cacahuetes en polvo", "kcal": 470, "proteina": 47, "carbs": 32.1, "grasa": 14 },
+                { "nombre": "Miel", "kcal": 304, "proteina": 0.3, "carbs": 82, "grasa": 0, "gramos": 10 },
+            ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
+            "Tribulus_Terrestris": "750mg",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Santi C": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
+                { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
+            ],
+            "Media mañana": [
+                { "nombre": "Barrita de proteína", "kcal": 376, "proteina": 50, "carbs": 23, "grasa": 13, "gramos": 45 }
+            ],
+            "Comida": [
+                { "nombre": "Quinoa", "kcal": 389, "proteina": 14, "carbs": 66.5, "grasa": 6.1, "gramos": 50 },
+                { "nombre": "Arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50 },
+                { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 45 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+            ],
+            "Cena": [
+              { "nombre": "Caldo", "kcal": 4.2, "proteina": 0.3, "carbs": 0.2, "grasa": 0.3, "gramos": 120 },
+              { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 30 },
+              { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5 },
+              { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 50 }
+          ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
+            "Tribulus_Terrestris": "750mg",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Santi D": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
+                { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
+            ],
+            "Media mañana": [
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 }
+            ],
+            "Comida": [
+                { "nombre": "Lentejas", "kcal": 89, "proteina": 8.2, "carbs": 10.7, "grasa": 0.4, "gramos": 210 },
+                { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 45 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+            ],
+            "Cena": [
+              { "nombre": "Caldo", "kcal": 4.2, "proteina": 0.3, "carbs": 0.2, "grasa": 0.3, "gramos": 120 },
+              { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 30 },
+              { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5 },
+              { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 50 }
+          ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
+            "Tribulus_Terrestris": "750mg",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Santi E": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 320 },
+                { "nombre": "Tortita", "kcal": 293, "proteina": 18, "carbs": 37, "grasa": 7, "gramos": 40 },
+                { "nombre": "Pollo o Pavo", "kcal": 125, "proteina": 26.8, "carbs": 0.5, "grasa": 2, "gramos": 42 },
+                { "nombre": "Café", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120 },
+                { "nombre": "Avena", "kcal": 372, "proteina": 14, "carbs": 59, "grasa": 7, "gramos": 20 }
+            ],
+            "Media mañana": [
+                { "nombre": "Barrita de proteína", "kcal": 376, "proteina": 50, "carbs": 23, "grasa": 13, "gramos": 45 }
+            ],
+            "Comida": [
+                { "nombre": "Garbanzos", "kcal": 90, "proteina": 5.5, "carbs": 9.5, "grasa": 2.2, "gramos": 210 },
+                { "nombre": "Pollo o Pavo", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 180 }
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30 },
+                { "nombre": "Crema de arroz", "kcal": 384, "proteina": 8, "carbs": 85, "grasa": 1, "gramos": 45 },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6 },
+                { "nombre": "Manzana", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 120 }
+            ],
+            "Cena": [
+              { "nombre": "Caldo", "kcal": 4.2, "proteina": 0.3, "carbs": 0.2, "grasa": 0.3, "gramos": 120 },
+              { "nombre": "Queso en polvo", "kcal": 286, "proteina": 23.7, "carbs": 8.6, "grasa": 17.4, "gramos": 30 },
+              { "nombre": "Proteína guisante", "kcal": 347, "proteina": 50, "carbs": 17, "grasa": 5 },
+              { "nombre": "Proteína soja", "kcal": 324, "proteina": 51, "carbs": 20, "grasa": 0.8, "gramos": 50 }
+          ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "L-Citrulina_Malato": "6-8g",
+            "Tribulus_Terrestris": "750mg",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Kathy A": {
       "dia": {
         "Desayuno": [
-          {"nombre": "Huevos enteros", "kcal": 210, "proteina": 18, "carbs": 1, "grasa": 15, "gramos": 250 },
-          {"nombre": "Avena", "kcal": 230, "proteina": 8, "carbs": 38, "grasa": 4, "gramos": 40 },
-          {"nombre": "Platano", "kcal": 105, "proteina": 1, "carbs": 27, "grasa": 0}
+          { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 220},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Rodaja de piña o Fresas", "kcal": 32, "proteina": 0.7, "carbs": 7.7, "grasa": 0.3, "gramos": 100},
+          { "nombre": "Café o Té o Manzanilla", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120}
         ],
         "Media mañana": [
-          {"nombre": "Yogur 0%", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0, "gramos": 200 },
-          {"nombre": "Nueces", "kcal": 100, "proteina": 2, "carbs": 2, "grasa": 10}
+          { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50},
+          { "nombre": "Rodaja de piña", "kcal": 50, "proteina": 0.5, "carbs": 13, "grasa": 0.1, "gramos": 100}
         ],
         "Comida": [
-          {"nombre": "Pechuga Pollo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3, "gramos": 250 },
-          {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1, "gramos": 100},
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
+          { "nombre": "Pollo o Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3, "gramos": 180},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Verduras cocida sin sal", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5, "gramos": 150},
+          { "nombre": "Remolacha cocida", "kcal": 44, "proteina": 1.7, "carbs": 10, "grasa": 0.2, "gramos": 100}
         ],
         "Merienda": [
-          {"nombre": "Pan integral",  "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 150 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
+          { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50}
         ],
         "Cena": [
-          {"nombre": "Merluza", "kcal": 160, "proteina": 36, "carbs": 0, "grasa": 2, "gramos": 200 },
-          {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
+          { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
+          { "nombre": "Patata dulce", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0, "gramos": 100},
+          { "nombre": "Brócoli", "kcal": 34, "proteina": 2.8, "carbs": 7, "grasa": 0.4, "gramos": 100}
         ]
       },
       "suplementos": {
-        "Creatina_Monohidrato": "5g"
+        "Al levantarte": {
+          "Argiol": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "Auxina E 200mg": "Perlita"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "VitaminaC-REDOXON 1g": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Algiol": "3CAP"
+        }
       }  
     },
-    "Martes": {
+    "Dieta Kathy B": {
       "dia": {
+        "Desayuno": [
+          { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 220},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Rodaja de piña o Fresas", "kcal": 32, "proteina": 0.7, "carbs": 7.7, "grasa": 0.3, "gramos": 100},
+          { "nombre": "Café o Té o Manzanilla", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120}
+        ],
+        "Media mañana": [
+          { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50},
+          { "nombre": "Rodaja de piña", "kcal": 50, "proteina": 0.5, "carbs": 13, "grasa": 0.1, "gramos": 100}
+        ],
+        "Comida": [
+          { "nombre": "Pollo o Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3, "gramos": 180},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Verduras cocida sin sal", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5, "gramos": 150},
+          { "nombre": "Remolacha cocida", "kcal": 44, "proteina": 1.7, "carbs": 10, "grasa": 0.2, "gramos": 100}
+        ],
+        "Merienda": [
+          { "nombre": "Atún natural", "kcal": 333, "proteina": 18, "carbs": 0.5, "grasa": 0.6, "gramos": 56},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50}
+        ],
+        "Cena": [
+          { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
+          { "nombre": "Patata dulce", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0, "gramos": 100},
+          { "nombre": "Brócoli", "kcal": 34, "proteina": 2.8, "carbs": 7, "grasa": 0.4, "gramos": 100}
+        ]
+      },
+      "suplementos": {
+
+        "Al levantarte": {
+          "Argiol": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "Auxina E 200mg": "Perlita"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "VitaminaC-REDOXON 1g": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Algiol": "3CAP"
+        }
+      }  
+    },
+    "Dieta Kathy C": {
+      "dia": {
+        "Desayuno": [
+          { "nombre": "Tortilla claras", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 220},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Rodaja de piña o Fresas", "kcal": 32, "proteina": 0.7, "carbs": 7.7, "grasa": 0.3, "gramos": 100},
+          { "nombre": "Café o Té o Manzanilla", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 120}
+        ],
+        "Media mañana": [
+          { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50},
+          { "nombre": "Rodaja de piña", "kcal": 50, "proteina": 0.5, "carbs": 13, "grasa": 0.1, "gramos": 100}
+        ],
+        "Comida": [
+          { "nombre": "Pollo o Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 3, "gramos": 180},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 75},
+          { "nombre": "Verduras cocida sin sal", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5, "gramos": 150},
+          { "nombre": "Remolacha cocida", "kcal": 44, "proteina": 1.7, "carbs": 10, "grasa": 0.2, "gramos": 100}
+        ],
+        "Merienda": [
+          { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30},
+          { "nombre": "Arroz cocido", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 50}
+        ],
+        "Cena": [
+          { "nombre": "Pescado blanco", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200},
+          { "nombre": "Patata dulce", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0, "gramos": 100},
+          { "nombre": "Brócoli", "kcal": 34, "proteina": 2.8, "carbs": 7, "grasa": 0.4, "gramos": 100}
+        ]
+      },
+      "suplementos": {
+        "Al levantarte": {
+          "Argiol": "3CAP",
+          "Benadon": "Media"
+        },
+        "Desayuno": {
+          "MultiVitaminico": "1CAP",
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "Auxina E 200mg": "Perlita"
+        },
+        "Comida": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Merienda": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB",
+          "MultiVitaminico": "1CAP"
+        },
+        "Cena": {
+          "BCAA": "2CAP",
+          "EAA": "2TAB"
+        },
+        "Pre-entreno": {
+          "Tribulus": "3CAP",
+          "Glutamina": "4CAP",
+        },
+        "Pos-entreno": {
+          "Glutamina": "3CAP",
+          "BCAA": "4CAP",
+          "VitaminaC-REDOXON 1g": "1CAP",
+          "Acetilcisteina 600mg": "1CAP"
+        },
+        "Antes de dormir": {
+          "Algiol": "3CAP"
+        }
+      }  
+    },
+   "Dieta Carla A": {
+        "dia": {
             "Desayuno": [
-                { "nombre": "Zumo de naranja. etc", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
-                , "gramos": 20 },
-                { "nombre": "Cefé o poleto de té", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
-                , "gramos": 20 },
-                { "nombre": "Claras de huevo", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
-                , "gramos": 250 },
-                { "nombre": "Tostada integral", "kcal": 110, "proteina": 4, "carbs": 20, "grasa": 1.5
-                , "gramos": 200 },
-                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6
+                { "nombre": "Zumo de naranja", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1, "gramos": 200
+                },
+                { "nombre": "Cefé o poleto de té", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2, "gramos": 200
+                },
+                { "nombre": "Claras de huevo", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5, "gramos": 120
+                },
+                { "nombre": "Tostada integral", "kcal": 110, "proteina": 4, "carbs": 20, "grasa": 1.5, "gramos": 30
                 }
             ],
             "Media mañana": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
+                },
+                { "nombre": "Manzana o Piña", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 90
+                }
+            ],
+            "Comida": [
+                { "nombre": "Pollo o pavo o ternera", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2, "gramos": 150
+                },
+                { "nombre": "Patata cocida o arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8, "gramos": 100
+                },
+                { "nombre": "Tomate y lechuga", "kcal": 18, "proteina": 0.9, "carbs": 3.5, "grasa": 0.2, "gramos": 150
+                },
+                { "nombre": "Verduras cocida sin sal", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5, "gramos": 100
+                }
+            
+            ],
+            "Merienda": [
+                { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5, "gramos": 30
+                },
+                { "nombre": "Manzana o Piña", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0, "gramos": 90
+                }
+            ],
+            "Cena": [
+                { "nombre": "Pescado", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3, "gramos": 200
+                },
+                { "nombre": "Verduras", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5, "gramos": 200
+                }
+            ]
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
+    },
+    "Dieta Carla B": {
+        "dia": {
+            "Desayuno": [
+                { "nombre": "Zumo de naranja", "kcal": 45, "proteina": 0.7, "carbs": 11, "grasa": 0.1
+                },
+                { "nombre": "Cefé o poleto de té", "kcal": 2, "proteina": 6, "carbs": 4.6, "grasa": 0.2
+                },
+                { "nombre": "Claras de huevo", "kcal": 42, "proteina": 11, "carbs": 0.5, "grasa": 0.5
+                },
+                { "nombre": "Tostada integral", "kcal": 110, "proteina": 4, "carbs": 20, "grasa": 1.5
+                },
+                { "nombre": "Crema de cacahuetes", "kcal": 683, "proteina": 31.9, "carbs": 10.1, "grasa": 55.6
+                },
+            ],
+            "Media mañana": [
                 { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
-                , "gramos": 30 },
+                },
                 { "nombre": "Manzana o Piña", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
                 }
             ],
             "Comida": [
                 { "nombre": "Pollo o pavo o ternera", "kcal": 120, "proteina": 24, "carbs": 0, "grasa": 2
-                , "gramos": 250 },
+                },
                 { "nombre": "Patata cocida o arroz", "kcal": 350, "proteina": 7.6, "carbs": 72, "grasa": 2.8
-                , "gramos": 200 },
+                },
                 { "nombre": "Tomate y lechuga", "kcal": 18, "proteina": 0.9, "carbs": 3.5, "grasa": 0.2
-                , "gramos": 200 },
+                },
                 { "nombre": "Verduras cocida sin sal", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5
                 }
             
             ],
             "Merienda": [
                 { "nombre": "Proteína de suero", "kcal": 42, "proteina": 78, "carbs": 3.4, "grasa": 8.5
-                , "gramos": 30 },
+                },
                 { "nombre": "Manzana o Piña", "kcal": 52, "proteina": 0.3, "carbs": 22, "grasa": 0
                 }
             ],
             "Cena": [
                 { "nombre": "Pescado", "kcal": 100, "proteina": 20, "carbs": 20, "grasa": 3
-                , "gramos": 250 },
+                },
                 { "nombre": "Verduras o Ensalada", "kcal": 35, "proteina": 3, "carbs": 7, "grasa": 0.5
                 }
             ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }  
-    },
-    "Miercoles": {
-      "dia": {
-        "Desayuno": [
-          {"nombre": "Smoothie proteico", "kcal": 360, "proteina": 30, "carbs": 50}
-        ],
-        "Media mañana": [
-          {"nombre": "Yogur 0%", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0, "gramos": 200 },
-          {"nombre": "Nueces", "kcal": 100, "proteina": 2, "carbs": 2, "grasa": 10}
-        ],
-        "Comida": [
-          {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7, "gramos": 250 },
-          {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1, "gramos": 200 },
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
-        ],
-        "Merienda": [
-          {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 200 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
-        ],
-        "Cena": [
-          {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3, "gramos": 250 },
-          {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
-        ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }  
-    },
-    "Jueves": {
-      "dia": {
-        "Desayuno": [
-          {"nombre": "Tortilla huevos", "kcal": 215, "proteina": 18, "carbs": 3, "grasa": 15, "gramos": 250 },
-          {"nombre": "Avena", "kcal": 230, "proteina": 8, "carbs": 38, "grasa": 4}
-        ],
-        "Media mañana": [
-          {"nombre": "Whey protein", "kcal": 120, "proteina": 24, "carbs": 2, "grasa": 1, "gramos": 30 },
-          {"nombre": "Nueces", "kcal": 100, "proteina": 2, "carbs": 2, "grasa": 10}
-        ],
-        "Comida": [
-          {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22, "gramos": 250 },
-          {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1, "gramos": 20 },
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
-        ],
-        "Merienda": [
-          {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 200 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
-        ],
-        "Cena": [
-          {"nombre": "Merluza", "kcal": 160, "proteina": 36, "carbs": 0, "grasa": 2, "gramos": 250},
-          {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0}
-        ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }  
-    },
-    "Viernes": {
-      "dia": {
-        "Desayuno": [
-          {"nombre": "Huevos enteros", "kcal": 210, "proteina": 18, "carbs": 1, "grasa": 15, "gramos": 250 },
-          {"nombre": "Avena", "kcal": 230, "proteina": 8, "carbs": 38, "grasa": 4, "gramos": 40 },
-          {"nombre": "Platano", "kcal": 105, "proteina": 1, "carbs": 27, "grasa": 0}
-        ],
-        "Media mañana": [
-          {"nombre": "Yogur 0%", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0, "gramos": 200 },
-          {"nombre": "Almendras", "kcal": 90, "proteina": 3, "carbs": 3, "grasa": 7}
-        ],
-        "Comida": [
-          {"nombre": "Pavo", "kcal": 165, "proteina": 35, "carbs": 0, "grasa": 2, "gramos": 250 },
-          {"nombre": "Quinoa cruda", "kcal": 295, "proteina": 10, "carbs": 55, "grasa": 5, "gramos": 200 },
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
-        ],
-        "Merienda": [
-          {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 200 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
-        ],
-        "Cena": [
-          {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22, "gramos": 250 },
-          {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
-        ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }      
-    },
-    "Sábado": {
-      "dia": {
-        "Desayuno": [
-          {"nombre": "Smoothie proteico", "kcal": 360, "proteina": 30, "carbs": 50, "grasa": 5}
-        ],
-        "Media mañana": [
-          {"nombre": "Yogur 0%", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0, "gramos": 200 },
-          {"nombre": "Nueces", "kcal": 100, "proteina": 2, "carbs": 2, "grasa": 10}
-        ],
-        "Comida": [
-          {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7, "gramos": 250 },
-          {"nombre": "Arroz crudo", "kcal": 290, "proteina": 6, "carbs": 62, "grasa": 1, "gramos": 200 },
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
-        ],
-        "Merienda": [
-          {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 200 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
-        ],
-        "Cena": [
-          {"nombre": "Pollo", "kcal": 220, "proteina": 46, "carbs": 0, "grasa": 3, "gramos": 200 },
-          {"nombre": "Batata", "kcal": 220, "proteina": 4, "carbs": 50, "grasa": 0}
-        ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }
-    },
-    "Domingo": {
-      "dia": {
-        "Desayuno": [
-          {"nombre": "Huevos enteros", "kcal": 210, "proteina": 18, "carbs": 1, "grasa": 15, "gramos": 250 },
-          {"nombre": "Avena", "kcal": 230, "proteina": 8, "carbs": 38, "grasa": 4, "gramos": 40 },
-          {"nombre": "Frutos rojos",  "kcal": 50, "proteina": 1, "carbs": 12, "grasa": 0}
-        ],
-        "Media mañana": [
-          {"nombre": "Queso fresco", "kcal": 125, "proteina": 20, "carbs": 8, "grasa": 0, "gramos": 200 },
-          {"nombre": "Almendras", "kcal": 90, "proteina": 3, "carbs": 3, "grasa": 7}
-        ],
-        "Comida": [
-          {"nombre": "Ternera magro", "kcal": 210, "proteina": 36, "carbs": 0, "grasa": 7, "gramos": 250 },
-          {"nombre": "Quinoa cruda", "kcal": 295, "proteina": 10, "carbs": 55, "grasa": 5, "gramos": 200 },
-          {"nombre": "Verduras mixtas", "kcal": 50, "proteina": 2, "carbs": 10, "grasa": 0}
-        ],
-        "Merienda": [
-          {"nombre": "Pan integral", "kcal": 150, "proteina": 6, "carbs": 30, "grasa": 2, "gramos": 200 },
-          {"nombre": "Pavo", "kcal": 90, "proteina": 18, "carbs": 1, "grasa": 1}
-        ],
-        "Cena": [
-          {"nombre": "Salmon", "kcal": 400, "proteina": 40, "carbs": 0, "grasa": 22, "gramos": 250 },
-          {"nombre": "Patata", "kcal": 200, "proteina": 5, "carbs": 45, "grasa": 0}
-        ]
-      },
-      "suplementos": {
-        "Creatina_Monohidrato": "5g"
-      }
+        },
+        "suplementos": {
+            "Creatina_Monohidrato": "5g",
+            "Beta_Alanina": "3-6g",
+            "Ashwagandha": "300-600mg",
+            "Cafeina": "100-200mg pre",
+            "Bicarbonato": "0.2-0.3g/kg pre-H",
+            "Magnesio": "200-400mg noche"
+        }
     }
 }

@@ -734,7 +734,6 @@
   }
 
   function paintAll() {
-    saveHistory({ date: new Date().toLocaleDateString(), store });
     
     allItems.forEach(function (it) {
       var card = document.querySelector('.card[data-id="' + it.id + '"]');
@@ -770,6 +769,7 @@
     var ok = writeStore(store);
     paintAll();
     if (value) toast(ok ? "Guardado: " + value + " kg" : "No se pudo guardar");
+    saveHistory({ date: new Date().toLocaleDateString(), store });
   }
 
   document.addEventListener("change", function (e) {

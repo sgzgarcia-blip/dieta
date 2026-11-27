@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ratio X / O · matriz 5 × 7</title>
+<style>
+  :root {
+    --bg: #0b0f19;
+    --panel: #131a2b;
+    --line: #212b40;
+    --line2: #2b374f;
+    --text: #ffffff;
+    --muted: #93a0bb;
+    --dim: #6e7890;
+    --x: #5ad9f5;
+    --o: #ff8a8a;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 34px 20px 60px;
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background:
+      radial-gradient(900px 480px at 88% -12%, rgba(79, 172, 254, .16), transparent 70%),
+      radial-gradient(700px 420px at -10% 92%, rgba(0, 242, 254, .10), transparent 70%),
+      linear-gradient(160deg, #0b0f19, #131a2b);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1000px; margin: 0 auto; }
+
+  .kicker {
+    margin: 0;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+    color: var(--x);
+  }
+
+  h1 {
+    margin: 10px 0 8px;
+    font-size: clamp(26px, 4.4vw, 38px);
+    letter-spacing: -.8px;
+    line-height: 1.1;
+  }
+
+  .lede {
+    margin: 0 0 26px;
+    max-width: 62ch;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  .lede b { color: #dfe8f7; font-weight: 600; }
+
+  .layout {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr);
+    align-items: start;
+  }
+
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(20, 27, 42, .92), rgba(17, 23, 37, .92));
+    box-shadow: 0 18px 40px -28px #000;
+  }
+
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .card-meta {
+    font-size: 12px;
+    color: var(--dim);
+    font-variant-numeric: tabular-nums;
+  }
+
+  #grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .cell {
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    margin: 0;
+    border: 1.5px solid var(--line2);
+    border-radius: 12px;
+    background: #101725;
+    color: var(--dim);
+    font-family: inherit;
+    font-size: clamp(15px, 2.6vw, 24px);
+    font-weight: 800;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+    transition: background .14s ease, border-color .14s ease, transform .1s ease;
+  }
+
+  .cell:hover { border-color: #3d4d6b; background: #16202f; }
+  .cell:active { transform: scale(.95); }
+
+  .cell:focus-visible {
+    outline: 3px solid rgba(255, 255, 255, .45);
+    outline-offset: 2px;
+  }
+
+  .cell[data-v="x"] {
+    background: linear-gradient(160deg, #86e9ff, #35c8ea);
+    border-color: #a4efff;
+    color: #06202b;
+  }
+
+  .cell[data-v="o"] {
+    background: linear-gradient(160deg, #ffb9b9, #ff7a7a);
+    border-color: #ffd0d0;
+    color: #2b0a0f;
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .legend span { display: inline-flex; align-items: center; gap: 7px; }
+
+  .swatch {
+    width: 11px;
+    height: 11px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+
+  .swatch.x { background: #5ad9f5; }
+  .swatch.o { background: #ff8a8a; }
+  .swatch.e { background: #2b374f; }
+
+  /* ---------- resultados ---------- */
+  .ratio {
+    padding: 16px 18px 18px;
+    border: 1px solid #1d6d84;
+    border-radius: 14px;
+    background: linear-gradient(150deg, rgba(15, 43, 58, .95), rgba(15, 25, 40, .95));
+  }
+
+  .ratio-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6ae0f7;
+  }
+
+  .ratio-value {
+    margin: 6px 0 2px;
+    font-size: clamp(30px, 6vw, 42px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .ratio-factor {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .bar {
+    display: flex;
+    height: 14px;
+    margin: 16px 0 10px;
+    border-radius: 7px;
+    overflow: hidden;
+    background: #1b2333;
+  }
+
+  .bar > i {
+    display: block;
+    height: 100%;
+    width: 0;
+    transition: width .2s ease;
+  }
+
+  .bar .bx { background: linear-gradient(90deg, #35c8ea, #86e9ff); }
+  .bar .bo { background: linear-gradient(90deg, #ff7a7a, #ffb9b9); }
+
+  .rows {
+    display: grid;
+    gap: 1px;
+    margin-top: 16px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--line);
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 12px;
+    align-items: baseline;
+    padding: 10px 13px;
+    background: #131a29;
+    font-size: 13px;
+  }
+
+  .row .k { color: var(--muted); }
+  .row .n { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .row .p {
+    min-width: 58px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--dim);
+  }
+
+  .row.head {
+    background: #111725;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #5f6b82;
+  }
+
+  .row.head .p { color: #5f6b82; }
+
+  .n-x { color: var(--x); }
+  .n-o { color: var(--o); }
+
+  .note {
+    margin: 14px 0 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--dim);
+  }
+
+  /* ---------- botones ---------- */
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+  }
+
+  .actions + .actions { margin-top: 8px; }
+
+  .save {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 14px 0 0;
+    font-size: 11.5px;
+    color: #5f6b82;
+  }
+
+  .save::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: none;
+    border-radius: 50%;
+    background: #3ecf8e;
+  }
+
+  .save.off::before { background: #ff8a8a; }
+  .save.off { color: #a46d76; }
+
+  button.btn {
+    padding: 9px 14px;
+    border: 1px solid var(--line2);
+    border-radius: 10px;
+    background: #17202f;
+    color: #cbd6e8;
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .14s, border-color .14s, color .14s;
+  }
+
+  button.btn:hover { background: #1f2a3d; border-color: #3d4d6b; color: #fff; }
+  button.btn:focus-visible { outline: 3px solid rgba(255, 255, 255, .45); outline-offset: 2px; }
+  button.btn.warn:hover { border-color: #7a3b46; color: #ffc9cf; }
+
+  footer {
+    margin-top: 26px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #5a6479;
+  }
+
+  footer code {
+    padding: 1px 6px;
+    border-radius: 5px;
+    background: #131a29;
+    color: #8fa1bd;
+    font-size: 11.5px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Calculadora</p>
+  <h1>Ratio X / O en una matriz 5 × 7</h1>
+  <p class="lede">
+    Pulsa una celda para alternar <b>vacía → X → O</b>. Clic derecho la vacía.
+    Puedes arrastrar para pintar varias seguidas. El ratio y los porcentajes se
+    recalculan sobre las <b>35 celdas</b> (5 filas × 7 columnas) y la matriz se
+    guarda en este navegador para la próxima visita.
+  </p>
+
+  <div class="layout">
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">Matriz</h2>
+        <span class="card-meta">5 filas × 7 columnas = 35 celdas</span>
+      </div>
+
+      <div id="grid" role="group" aria-label="Matriz de 5 filas por 7 columnas"></div>
+
+      <div class="legend">
+        <span><i class="swatch x"></i>X</span>
+        <span><i class="swatch o"></i>O</span>
+        <span><i class="swatch e"></i>vacía</span>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn" id="btn-swap">Voltear X ↔ O</button>
+        <button type="button" class="btn" id="btn-fill-x">Todo X</button>
+        <button type="button" class="btn" id="btn-fill-o">Todo O</button>
+        <button type="button" class="btn warn" id="btn-clear"
+                title="Vacía las celdas; el estado vacío también queda guardado">Vaciar</button>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn" id="btn-json">Exportar JSON</button>
+        <button type="button" class="btn" id="btn-csv">Exportar CSV</button>
+        <button type="button" class="btn warn" id="btn-forget"
+                title="Elimina las claves de este navegador, no solo el contenido">Borrar datos</button>
+      </div>
+
+      <p class="save" id="save-state">Comprobando almacenamiento…</p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">Resultado</h2>
+        <span class="card-meta" id="marked-meta">0 de 35 marcadas</span>
+      </div>
+
+      <div class="ratio">
+        <div class="ratio-label">Ratio X : O</div>
+        <div class="ratio-value" id="ratio-value" aria-live="polite">—</div>
+        <div class="ratio-factor" id="ratio-factor">Marca celdas para empezar.</div>
+
+        <div class="bar" aria-hidden="true">
+          <i class="bx" id="bar-x"></i>
+          <i class="bo" id="bar-o"></i>
+        </div>
+
+        <div class="rows">
+          <div class="row head">
+            <span>Recuento</span>
+            <span class="n">Total</span>
+            <span class="p">%</span>
+          </div>
+          <div class="row">
+            <span class="k">X</span>
+            <span class="n n-x" id="count-x">0</span>
+            <span class="p" id="pct-x">0,0 %</span>
+          </div>
+          <div class="row">
+            <span class="k">O</span>
+            <span class="n n-o" id="count-o">0</span>
+            <span class="p" id="pct-o">0,0 %</span>
+          </div>
+          <div class="row">
+            <span class="k">Vacías</span>
+            <span class="n" id="count-empty">35</span>
+            <span class="p" id="pct-empty">100,0 %</span>
+          </div>
+        </div>
+
+        <p class="note" id="note">Sin marcas todavía.</p>
+        <p class="note" id="base-hint" style="margin-top:6px;font-size:11.5px;">
+          X y O: porcentaje sobre las celdas marcadas · Vacías: porcentaje sobre las 35.
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <code>%X = X ÷ (X + O) × 100</code> &nbsp;·&nbsp;
+    <code>%O = O ÷ (X + O) × 100</code> &nbsp;·&nbsp;
+    el ratio se reduce a su forma mínima (por ejemplo 15 : 10 → 3 : 2).
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var ROWS = 5, COLS = 7, TOTAL = ROWS * COLS;
+  var EMPTY = 0, X = 1, O = 2;
+
+  var grid = document.getElementById("grid");
+  var cells = [];
+  var state = new Array(TOTAL).fill(EMPTY);
+
+  var STORE_KEY = "ratioMatriz.v1";
+  var STORE_TIME = "ratioMatriz.v1.updated";
+  var saveTimer = null;
+  var storageOk = true;
+  var last = null; // resumen del último render (lo usan las exportaciones)
+
+  var el = {
+    ratioValue: document.getElementById("ratio-value"),
+    ratioFactor: document.getElementById("ratio-factor"),
+    countX: document.getElementById("count-x"),
+    countO: document.getElementById("count-o"),
+    countEmpty: document.getElementById("count-empty"),
+    pctX: document.getElementById("pct-x"),
+    pctO: document.getElementById("pct-o"),
+    pctEmpty: document.getElementById("pct-empty"),
+    barX: document.getElementById("bar-x"),
+    barO: document.getElementById("bar-o"),
+    markedMeta: document.getElementById("marked-meta"),
+    note: document.getElementById("note"),
+    saveState: document.getElementById("save-state")
+  };
+
+  /* ---------- utilidades ---------- */
+  function pct(part, whole) {
+    if (!whole) return "0,0 %";
+    return (part / whole * 100).toFixed(1).replace(".", ",") + " %";
+  }
+
+  function num(value, decimals) {
+    return value.toFixed(decimals).replace(".", ",");
+  }
+
+  function gcd(a, b) {
+    while (b) {
+      var t = b;
+      b = a % b;
+      a = t;
+    }
+    return a || 1;
+  }
+
+  function label(i, v) {
+    var pos = "fila " + (Math.floor(i / COLS) + 1) + ", columna " + (i % COLS + 1);
+    if (v === X) return pos + ": X";
+    if (v === O) return pos + ": O";
+    return pos + ": vacía";
+  }
+
+  /* ---------- construcción de la rejilla ---------- */
+  for (var i = 0; i < TOTAL; i++) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "cell";
+    b.dataset.i = String(i);
+    b.dataset.v = "";
+    b.textContent = "";
+    b.setAttribute("aria-label", label(i, EMPTY));
+    grid.appendChild(b);
+    cells.push(b);
+  }
+
+  /* ---------- estado ---------- */
+  function next(v) {
+    return v === EMPTY ? X : v === O ? EMPTY : O;
+  }
+
+  function setCell(i, v) {
+    state[i] = v;
+    var c = cells[i];
+    var mark = v === X ? "x" : v === O ? "o" : "";
+    c.dataset.v = mark;
+    c.textContent = v === X ? "X" : v === O ? "O" : "";
+    c.setAttribute("aria-label", label(i, v));
+  }
+
+  function setAll(v) {
+    for (var i = 0; i < TOTAL; i++) setCell(i, v);
+    render();
+    saveSoon();
+  }
+
+  /* ---------- pintado arrastrando ---------- */
+  var dragging = false;
+  var dragValue = EMPTY;
+
+  grid.addEventListener("pointerdown", function (e) {
+    var cell = e.target.closest(".cell");
+    if (!cell || e.button !== 0) return;
+    e.preventDefault();
+    var i = Number(cell.dataset.i);
+    dragging = true;
+    dragValue = next(state[i]);
+    setCell(i, dragValue);
+    render();
+    saveSoon();
+    cell.focus();
+  });
+
+  grid.addEventListener("pointerover", function (e) {
+    if (!dragging) return;
+    var cell = e.target.closest(".cell");
+    if (!cell) return;
+    var i = Number(cell.dataset.i);
+    if (state[i] === dragValue) return;
+    setCell(i, dragValue);
+    render();
+    saveSoon();
+  });
+
+  window.addEventListener("pointerup", function () { dragging = false; });
+  window.addEventListener("pointercancel", function () { dragging = false; });
+
+  /* teclado: Enter / Espacio llegan como click con detail 0 */
+  grid.addEventListener("click", function (e) {
+    var cell = e.target.closest(".cell");
+    if (!cell) return;
+    if (e.detail !== 0) return; // el ratón ya se gestionó en pointerdown
+    var i = Number(cell.dataset.i);
+    setCell(i, next(state[i]));
+    render();
+    saveSoon();
+  });
+
+  grid.addEventListener("contextmenu", function (e) {
+    var cell = e.target.closest(".cell");
+    if (!cell) return;
+    e.preventDefault();
+    setCell(Number(cell.dataset.i), EMPTY);
+    render();
+    saveSoon();
+  });
+
+  /* ---------- botones ---------- */
+  document.getElementById("btn-clear").addEventListener("click", function () { setAll(EMPTY); });
+  document.getElementById("btn-fill-x").addEventListener("click", function () { setAll(X); });
+  document.getElementById("btn-fill-o").addEventListener("click", function () { setAll(O); });
+  document.getElementById("btn-swap").addEventListener("click", function () {
+    for (var i = 0; i < TOTAL; i++) {
+      if (state[i] === X) setCell(i, O);
+      else if (state[i] === O) setCell(i, X);
+    }
+    render();
+    saveSoon();
+  });
+
+  /* ---------- cálculo ---------- */
+  function render() {
+    var x = 0, o = 0;
+    for (var i = 0; i < TOTAL; i++) {
+      if (state[i] === X) x++;
+      else if (state[i] === O) o++;
+    }
+    var marked = x + o;
+    var empty = TOTAL - marked;
+
+    last = {
+      x: x,
+      o: o,
+      empty: empty,
+      marked: marked,
+      g: (x > 0 && o > 0) ? gcd(x, o) : 0
+    };
+
+    el.countX.textContent = String(x);
+    el.countO.textContent = String(o);
+    el.countEmpty.textContent = String(empty);
+    el.pctX.textContent = pct(x, marked);
+    el.pctO.textContent = pct(o, marked);
+    el.pctEmpty.textContent = pct(empty, TOTAL);
+    el.markedMeta.textContent = marked + " de " + TOTAL + " marcadas";
+
+    el.barX.style.width = (marked ? x / marked * 100 : 0) + "%";
+    el.barO.style.width = (marked ? o / marked * 100 : 0) + "%";
+
+    if (!marked) {
+      el.ratioValue.textContent = ratioLabel();
+      el.ratioFactor.textContent = "Marca celdas para empezar.";
+      el.note.textContent = "Sin marcas todavía.";
+      return;
+    }
+
+    if (!x) {
+      el.ratioValue.textContent = ratioLabel();
+      el.ratioFactor.textContent = "Todas las marcas son O (" + o + ").";
+      el.note.textContent = "No hay ninguna X marcada.";
+      return;
+    }
+
+    if (!o) {
+      el.ratioValue.textContent = ratioLabel();
+      el.ratioFactor.textContent = "Todas las marcas son X (" + x + ").";
+      el.note.textContent = "No hay ninguna O marcada.";
+      return;
+    }
+
+    var g = gcd(x, o);
+    el.ratioValue.textContent = ratioLabel();
+
+    var factor = x / o;
+    el.ratioFactor.textContent = "Cada O se corresponde con " + num(factor, 2) + " X.";
+
+    var diff = Math.abs(x - o);
+    var gap = diff === 1 ? "1 marca" : diff + " marcas";
+    if (diff === 0) {
+      el.note.textContent = "Empate exacto: " + x + " X y " + o + " O.";
+    } else {
+      var base = g === 1
+        ? "Ratio exacto de " + x + " : " + o
+        : "Simplificado desde " + x + " : " + o;
+      el.note.textContent = base + " · " + gap + " de ventaja para " + (x > o ? "X" : "O") + ".";
+    }
+  }
+
+  /* ---------- exportación ---------- */
+  function ratioLabel() {
+    if (!last || !last.marked) return "—";
+    if (!last.x) return "0 : 1";
+    if (!last.o) return "1 : 0";
+    return (last.x / last.g) + " : " + (last.o / last.g);
+  }
+
+  function percent(part, whole) {
+    return whole ? Math.round(part / whole * 1000) / 10 : 0;
+  }
+
+  function dec(value) {
+    return value.toFixed(1).replace(".", ",");
+  }
+
+  function matrixRows() {
+    var rows = [];
+    for (var r = 0; r < ROWS; r++) {
+      var row = [];
+      for (var c = 0; c < COLS; c++) {
+        var v = state[r * COLS + c];
+        row.push(v === X ? "X" : v === O ? "O" : "");
+      }
+      rows.push(row);
+    }
+    return rows;
+  }
+
+  function csvText() {
+    var s = last;
+    var rows = matrixRows();
+    var out = [
+      "sep=;",
+      "Campo;Valor",
+      "Filas;" + ROWS,
+      "Columnas;" + COLS,
+      "Celdas;" + TOTAL,
+      "X;" + s.x,
+      "O;" + s.o,
+      "Vacías;" + s.empty,
+      "Marcadas;" + s.marked,
+      "Ratio X:O;" + ratioLabel(),
+      "% X (sobre marcadas);" + dec(percent(s.x, s.marked)),
+      "% O (sobre marcadas);" + dec(percent(s.o, s.marked)),
+      "% vacías (sobre " + TOTAL + ");" + dec(percent(s.empty, TOTAL)),
+      "Exportado;" + new Date().toISOString(),
+      "",
+      "Matriz;1;2;3;4;5;6;7"
+    ];
+    for (var i = 0; i < rows.length; i++) {
+      out.push("Fila " + (i + 1) + ";" + rows[i].join(";"));
+    }
+    return out.join("\r\n") + "\r\n";
+  }
+
+  function jsonText() {
+    var s = last;
+    return JSON.stringify({
+      exportado: new Date().toISOString(),
+      matriz: {
+        filas: ROWS,
+        columnas: COLS,
+        celdas: TOTAL,
+        valores: matrixRows()
+      },
+      recuento: {
+        x: s.x,
+        o: s.o,
+        vacias: s.empty,
+        marcadas: s.marked
+      },
+      ratio: {
+        texto: ratioLabel(),
+        xPorO: (s.x && s.o) ? Math.round(s.x / s.o * 100) / 100 : null
+      },
+      porcentajes: {
+        xSobreMarcadas: percent(s.x, s.marked),
+        oSobreMarcadas: percent(s.o, s.marked),
+        vaciasSobreTotal: percent(s.empty, TOTAL)
+      }
+    }, null, 2) + "\n";
+  }
+
+  function fileStamp() {
+    var d = new Date();
+    var p = function (n) { return String(n).padStart(2, "0"); };
+    return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+  }
+
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type + ";charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  document.getElementById("btn-json").addEventListener("click", function () {
+    download("ratio-matriz-" + fileStamp() + ".json", jsonText(), "application/json");
+  });
+
+  document.getElementById("btn-csv").addEventListener("click", function () {
+    // BOM: Excel abre el archivo como UTF-8 y respeta tildes y eñes
+    download("ratio-matriz-" + fileStamp() + ".csv", "\uFEFF" + csvText(), "text/csv");
+  });
+
+  document.getElementById("btn-forget").addEventListener("click", function () {
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      saveTimer = null;
+    }
+    var ok = true;
+    try {
+      localStorage.removeItem(STORE_KEY);
+      localStorage.removeItem(STORE_TIME);
+    } catch (e) {
+      ok = false;
+    }
+    for (var i = 0; i < TOTAL; i++) setCell(i, EMPTY);
+    render();
+    if (ok) {
+      storageOk = true;
+      setSaveState("Datos borrados de este navegador");
+    } else {
+      storageOk = false;
+      setSaveState("No se puede borrar: el navegador bloquea el almacenamiento local", true);
+    }
+  });
+
+  /* ---------- persistencia (localStorage) ---------- */
+  function serialize() {
+    var out = "";
+    for (var i = 0; i < TOTAL; i++) {
+      out += state[i] === X ? "x" : state[i] === O ? "o" : ".";
+    }
+    return out;
+  }
+
+  function clock(ts) {
+    if (!ts) return "";
+    var d = new Date(ts);
+    return String(d.getHours()).padStart(2, "0") + ":" +
+           String(d.getMinutes()).padStart(2, "0");
+  }
+
+  function setSaveState(msg, off) {
+    el.saveState.className = off ? "save off" : "save";
+    el.saveState.textContent = msg;
+  }
+
+  function save() {
+    saveTimer = null;
+    if (!storageOk) return;
+    try {
+      localStorage.setItem(STORE_KEY, serialize());
+      localStorage.setItem(STORE_TIME, String(Date.now()));
+      setSaveState("Guardado en este navegador · " + clock(Date.now()));
+    } catch (e) {
+      storageOk = false;
+      setSaveState("No se puede guardar: el navegador bloquea el almacenamiento local", true);
+    }
+  }
+
+  function saveSoon() {
+    if (saveTimer) clearTimeout(saveTimer);
+    saveTimer = setTimeout(save, 150);
+  }
+
+  function load() {
+    var raw = null;
+    var ts = 0;
+    try {
+      raw = localStorage.getItem(STORE_KEY);
+      ts = Number(localStorage.getItem(STORE_TIME)) || 0;
+    } catch (e) {
+      storageOk = false;
+      setSaveState("No se puede guardar: el navegador bloquea el almacenamiento local", true);
+      return;
+    }
+    if (!raw || raw.length !== TOTAL) {
+      setSaveState("Guardado automático activado");
+      return;
+    }
+    var marked = 0;
+    for (var i = 0; i < TOTAL; i++) {
+      var ch = raw.charAt(i);
+      var v = ch === "x" ? X : ch === "o" ? O : EMPTY;
+      setCell(i, v);
+      if (v !== EMPTY) marked++;
+    }
+    setSaveState(marked
+      ? "Restaurado de este navegador · " + clock(ts)
+      : "Guardado automático activado");
+  }
+
+  /* si se cierra la pestaña antes de que expire el retardo, se escribe igual */
+  window.addEventListener("pagehide", function () {
+    if (saveTimer) {
+      clearTimeout(saveTimer);
+      save();
+    }
+  });
+
+  load();
+  render();
+})();
+</script>
+</body>
+</html>

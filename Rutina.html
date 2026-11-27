@@ -475,7 +475,7 @@
   @media (max-width: 340px) {
     .weight { gap: 5px; }
     .step { width: 36px; }
-    select { padding-left: 9px; font-size: 15px; }
+    select { padding-left: 9px; font-size: 35px; }
   }
 
   /* ---------- PRINT ---------- */
@@ -677,11 +677,11 @@
       card.className = "card";
       card.dataset.id = it.id;
 
-      var opts = '<option value="">—</option>';
+      var opts = '';
       for (var w = MAX; w >= MIN; w -= STEP) {
         opts += '<option value="' + w + '">' + w + " kg</option>";
       }
-
+      opts += '<option value="">—</option>';
       card.innerHTML =
         '<div class="card-top">' +
           '<span class="pill">' + it.equip + "</span>" +

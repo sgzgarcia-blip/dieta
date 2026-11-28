@@ -957,7 +957,7 @@
         "</div>" +
         '<div class="bar"><i></i></div>' +
         '<div class="scale"><span>' + MIN + " kg</span><span>" + (it.note ? it.note : "máx. " + MAX + " kg") + "</span><span>" + MAX + " kg</span></div>" +
-        '<section class="card" id="tarjeta' + it.id + '" style="display: none;"></section>' +
+        '<section id="tarjeta' + it.id + '" style="display: none;"></section>' +
         '<canvas id="' + it.id + '"></canvas>' +
         '<button class="ghost" id="resetHistory" data-id="' + it.id + '">Borrar historico de pesos</button>';
       host.appendChild(card);
@@ -1135,7 +1135,7 @@
       if(tarjeta) {
         tarjeta.style.display = "none";
         tarjeta.innerHTML = "";
-      } ;
+      };
 
       tarjeta = document.getElementById("tarjeta" + tab.getAttribute("data-id"));
       tarjeta.style.display = "block";
@@ -1172,7 +1172,7 @@
       });
 
       crono.establecer(Number((palabras[2] === 'min' ? parseInt(palabras[1]) * 60 : parseInt(palabras[1]))));
-      crono.alternar();
+      crono.iniciar();
 
       toast(tab.innerHTML);
       //window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1194,6 +1194,11 @@
     });
     if(new Date(siguiente).getTime() < ahora.getTime()) {
       document.getElementById("hora").style.color = "#e7f2f8";
+      crono && (crono.reiniciar());
+      if(tarjeta) {
+        tarjeta.style.display = "none";
+        tarjeta.innerHTML = "";
+      };
     }
     document.getElementById("hora").textContent = hora;
   }

@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <title>Dieta y Macros Dinámicos</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="scroll-top.js"></script>
   <style>
       :root {
         --bg: #08131c;
@@ -206,6 +207,9 @@
     const boton = form.querySelector(".btn-loader");
     const spinner = boton.querySelector(".spinner");
     let chartG,chartC,chart,antGCorporal, antPeso;
+
+    var botonSubir = iniciarBotonArriba({ umbral: 400, etiqueta: "&uarr;" });
+    botonSubir.mostrar(); 
 
     document.querySelector('h1').textContent = document.querySelector('h1').textContent.replace("#name#", name);
 

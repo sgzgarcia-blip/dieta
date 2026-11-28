@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Rutina Empuje, Tirón y Piernas</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="scroll-top.js"></script>
 <style>
   :root {
     --bg: #08131c;
@@ -436,6 +437,52 @@
   .cards > * { min-width: 0; }
   .select-wrap { min-width: 0; }
 
+  .ring-wrap {
+    position: relative;
+    width: min(100px, 78vw);
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .ring .track {
+    fill: none;
+    stroke: #1b2333;
+    stroke-width: 14;
+  }
+
+  .ring .bar {
+    fill: none;
+    stroke: url(#grad);
+    stroke-width: 14;
+    stroke-linecap: round;
+    transition: stroke-dashoffset .1s linear;
+  }
+
+  .centro {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .estado {
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .3px;
+    color: var(--dim);
+    min-height: 18px;
+  }
+
+
   /* tablets y portátiles pequeños */
   @media (max-width: 900px) {
     .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -502,6 +549,7 @@
     <a href="Dieta.html?name=Default" class="enlace-limpio"><h1>Empuje,<span> Tirón y Piernas</span> + Dieta</h1></a>
   </header>
   <center><h1 id="hora" style="font-size: 78px; margin: 10px 0;"></h1></center>
+  <center><h1 id="crono" style="display: none;font-size: 18px; margin: 10px 0;" ></h1></center>
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" aria-selected="true" data-panel="p-torso" id="tab-torso">
       Torso en Smith <span class="count" id="count-torso">0/8</span>
@@ -545,6 +593,200 @@
 <div class="toast" id="toast">Peso guardado</div>
 
 <script>
+  (function (global) {
+  "use strict";
+
+  var INTERVALO_POR_DEFECTO = 100;
+
+  /**
+   * Acepta 90, 90.5 o "1:30" y devuelve milisegundos.
+   */
+  function aMilisegundos(valor) {
+    if (typeof valor === "number" && isFinite(valor)) {
+      return Math.max(0, Math.round(valor * 1000));
+    }
+    if (typeof valor === "string") {
+      var partes = valor.trim().match(/^(\d+):([0-5]?\d(?:\.\d+)?)$/);
+      if (partes) {
+        return Math.round((Number(partes[1]) * 60 + Number(partes[2])) * 1000);
+      }
+      var numero = Number(valor);
+      if (isFinite(numero)) return Math.max(0, Math.round(numero * 1000));
+    }
+    return 0;
+  }
+
+  /**
+   * Milisegundos -> "mm:ss" (o "mm:ss.d" si conDecimas).
+   */
+  function formatear(ms, conDecimas) {
+    var resto = Math.max(0, Math.round(ms));
+    var totalSeg = Math.floor(resto / 1000);
+    var minutos = Math.floor(totalSeg / 60);
+    var segundos = totalSeg % 60;
+    var texto = String(minutos).padStart(2, "0") + ":" + String(segundos).padStart(2, "0");
+    if (conDecimas) {
+      texto += "." + Math.floor((resto % 1000) / 100);
+    }
+    return texto;
+  }
+
+  function crearCronometro(opciones) {
+    opciones = opciones || {};
+
+    var intervalo = Math.max(16, Number(opciones.intervaloMs) || INTERVALO_POR_DEFECTO);
+    var alTick = typeof opciones.alTick === "function" ? opciones.alTick : function () {};
+    var alTerminar = typeof opciones.alTerminar === "function" ? opciones.alTerminar : function () {};
+    var alCambiarEstado = typeof opciones.alCambiarEstado === "function"
+      ? opciones.alCambiarEstado
+      : function () {};
+
+    var totalMs = aMilisegundos(opciones.segundos === undefined ? 60 : opciones.segundos);
+    var restanteMs = totalMs;
+    var estado = "detenido"; // detenido | corriendo | pausado | terminado
+    var finEn = 0;           // marca de tiempo en la que la cuenta llega a 0
+    var idIntervalo = null;
+    var avisado = false;     // para no disparar alTerminar dos veces
+
+    function ahora() {
+      return (global.performance && global.performance.now)
+        ? global.performance.now()
+        : Date.now();
+    }
+
+    function pararIntervalo() {
+      if (idIntervalo !== null) {
+        clearInterval(idIntervalo);
+        idIntervalo = null;
+      }
+    }
+
+    function emitir() {
+      alTick({
+        restanteMs: restanteMs,
+        restanteSeg: Math.ceil(restanteMs / 1000),
+        totalMs: totalMs,
+        porcentaje: totalMs > 0 ? 1 - restanteMs / totalMs : 1,
+        texto: formatear(restanteMs),
+        estado: estado
+      });
+    }
+
+    function cambiarEstado(nuevo) {
+      estado = nuevo;
+      alCambiarEstado(estado);
+      emitir();
+    }
+
+    function finalizar() {
+      pararIntervalo();
+      restanteMs = 0;
+      if (avisado) return;
+      avisado = true;
+      cambiarEstado("terminado");
+      alTerminar({ totalMs: totalMs });
+    }
+
+    function tick() {
+      var quedan = finEn - ahora();
+      if (quedan <= 0) {
+        finalizar();
+        return;
+      }
+      restanteMs = quedan;
+      emitir();
+    }
+
+    function iniciar() {
+      if (estado === "corriendo") return;
+      if (restanteMs <= 0) restanteMs = totalMs; // tras terminar, vuelve a empezar
+      if (restanteMs <= 0) return;
+      avisado = false;
+      pararIntervalo();
+      finEn = ahora() + restanteMs;
+      idIntervalo = setInterval(tick, intervalo);
+      cambiarEstado("corriendo");
+      tick();
+    }
+
+    function pausar() {
+      if (estado !== "corriendo") return;
+      restanteMs = Math.max(0, finEn - ahora());
+      pararIntervalo();
+      cambiarEstado("pausado");
+    }
+
+    function alternar() {
+      if (estado === "corriendo") pausar();
+      else iniciar();
+    }
+
+    function reiniciar() {
+      pararIntervalo();
+      restanteMs = totalMs;
+      avisado = false;
+      cambiarEstado("detenido");
+    }
+
+    function establecer(segundos) {
+      pararIntervalo();
+      totalMs = aMilisegundos(segundos);
+      restanteMs = totalMs;
+      avisado = false;
+      cambiarEstado("detenido");
+    }
+
+    function ajustar(segundos) {
+      var deltaMs = Math.round(segundos * 1000);
+      var nuevo = Math.max(0, restanteMs + deltaMs);
+      totalMs = Math.max(1, totalMs + deltaMs, nuevo);
+      restanteMs = nuevo;
+
+      if (estado === "terminado" && restanteMs > 0) {
+        avisado = false;
+        cambiarEstado("detenido");
+        return;
+      }
+      if (estado === "corriendo") {
+        finEn = ahora() + restanteMs;
+        if (restanteMs <= 0) {
+          finalizar();
+          return;
+        }
+      }
+      emitir();
+    }
+
+    function sumar(segundos) { ajustar(Math.abs(segundos)); }
+    function restar(segundos) { ajustar(-Math.abs(segundos)); }
+
+    return {
+      iniciar: iniciar,
+      pausar: pausar,
+      reanudar: iniciar,
+      alternar: alternar,
+      reiniciar: reiniciar,
+      detener: reiniciar,
+      establecer: establecer,
+      sumar: sumar,
+      restar: restar,
+      formatear: formatear,
+      get estado() { return estado; },
+      get restanteMs() { return restanteMs; },
+      get totalMs() { return totalMs; },
+      get corriendo() { return estado === "corriendo"; }
+    };
+  }
+
+  crearCronometro.formatear = formatear;
+  crearCronometro.aMilisegundos = aMilisegundos;
+
+  global.crearCronometro = crearCronometro;
+  if (typeof module === "object" && module.exports) {
+    module.exports = crearCronometro;
+  }
+})(typeof globalThis !== "undefined" ? globalThis : this);
+
 (function () {
   "use strict";
 
@@ -554,6 +796,11 @@
   var MIN = 5, MAX = 300, STEP = 5;
   var siguiente = new Date();
   let chart={};
+  var CIRC = 2 * Math.PI * 110;
+  var crono,tiempo,estadoEl,anillo,tarjeta;
+
+  var boton = iniciarBotonArriba({ umbral: 400, etiqueta: "&uarr;" });
+  boton.mostrar(); 
 
   var DATA = [
     {
@@ -608,6 +855,9 @@
       ]
     },
   ];
+
+
+
 
   /* ---------- almacenamiento ---------- */
   function readStore() {
@@ -696,7 +946,7 @@
           "<span><b>" + it.series + "</b></span>" +
           "<span>" + it.reps + "</span>" +
           "<span>" + it.rir + "</span>" +
-          "<span id='descanso'>" + it.rest + "</span>" +
+          "<span id='descanso' data-id='" + it.id + "'>" + it.rest + "</span>" +
         "</div>" +
         '<div class="weight">' +
           '<button class="step" type="button" data-act="minus" aria-label="Bajar 5 kg">−</button>' +
@@ -707,6 +957,7 @@
         "</div>" +
         '<div class="bar"><i></i></div>' +
         '<div class="scale"><span>' + MIN + " kg</span><span>" + (it.note ? it.note : "máx. " + MAX + " kg") + "</span><span>" + MAX + " kg</span></div>" +
+        '<section class="card" id="tarjeta' + it.id + '" style="display: none;"></section>' +
         '<canvas id="' + it.id + '"></canvas>' +
         '<button class="ghost" id="resetHistory" data-id="' + it.id + '">Borrar historico de pesos</button>';
       host.appendChild(card);
@@ -762,6 +1013,21 @@
       var done = group.items.filter(function (it) { return store[it.id]; }).length;
       document.getElementById("count-" + group.id).textContent = done + "/" + group.items.length;
     });
+  }
+
+  //Cronometro
+  function pintar(t) {
+    tiempo.textContent = t.texto;
+    anillo.style.strokeDashoffset = (CIRC * t.porcentaje).toFixed(2);
+    tarjeta.classList.toggle(
+      "urgente",
+      t.estado === "corriendo" && t.restanteMs <= 10000 && t.restanteMs > 0
+    );
+
+    if (t.estado === "corriendo") estadoEl.textContent = "En marcha";
+    else if (t.estado === "pausado") estadoEl.textContent = "Pausado · quedan " + t.texto;
+    else if (t.estado === "terminado") estadoEl.textContent = "¡Tiempo!";
+    else estadoEl.textContent = "Listo";
   }
 
   /* ---------- eventos ---------- */
@@ -865,8 +1131,51 @@
       document.getElementById("hora").style.color = "red";
       const palabras = tab.innerHTML.split(" ");
       siguiente = new Date().setSeconds(new Date().getSeconds() + (palabras[2] === 'min' ? parseInt(palabras[1]) * 60 : parseInt(palabras[1])));
+      crono && (crono.reiniciar());
+      if(tarjeta) {
+        tarjeta.style.display = "none";
+        tarjeta.innerHTML = "";
+      } ;
+
+      tarjeta = document.getElementById("tarjeta" + tab.getAttribute("data-id"));
+      tarjeta.style.display = "block";
+      tarjeta.innerHTML = '<div id="ring" class="ring-wrap">' +
+          '<svg class="ring" viewBox="0 0 260 260" aria-hidden="true">' +
+          '<defs>' +
+            '<linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">' +
+              '<stop offset="0" stop-color="#4facfe"/>' +
+              '<stop offset="1" stop-color="#00f2fe"/>' +
+            '</linearGradient>' +
+          '</defs>' +
+          '<circle class="track" cx="130" cy="130" r="110"/>' +
+          '<circle class="bar" id="anillo" cx="130" cy="130" r="110"/>' +
+        '</svg>' +
+        '<div class="centro">' +
+           '<div class="tiempo" id="tiempo" role="timer" aria-live="off"></div>' +
+           '<div class="estado" id="estado" aria-live="polite">Listo</div>' +
+        '</div>';
+      
+      tiempo = document.getElementById("tiempo");
+      estadoEl = document.getElementById("estado");
+      anillo = document.getElementById("anillo");
+      anillo.style.strokeDasharray = CIRC.toFixed(2);
+
+      crono = crearCronometro({
+          segundos: 0,
+          alTick: pintar,
+          alCambiarEstado: function (estado) {
+            if (estado === "terminado") {
+              tarjeta.style.display = "none";
+              tarjeta.innerHTML = "";
+            }
+          }
+      });
+
+      crono.establecer(Number((palabras[2] === 'min' ? parseInt(palabras[1]) * 60 : parseInt(palabras[1]))));
+      crono.alternar();
+
       toast(tab.innerHTML);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      //window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   });
 
@@ -927,6 +1236,7 @@
 
   paintAll();
 })();
+
 </script>
 </body>
 </html>
